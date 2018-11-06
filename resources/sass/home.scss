@@ -1,0 +1,17 @@
+.grid-container{
+    display: grid;
+    grid-template-columns : 1fr 1fr;
+    grid-gap: .5em;  /*gouttières */      
+}
+
+.grid-item1{
+    grid-column: 1 / span 2;
+}
+
+
+.grid-item{
+    border-radius: 10px;
+    background-color: #444;
+    color: #fff;
+    height: 100px;
+}
