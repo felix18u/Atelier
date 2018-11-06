@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `cat_id` int(11) NOT NULL,
   `img` text NOT NULL,
   `prix` decimal(5,2) NOT NULL,
-  PRIMARY KEY (`id`)
-  FOREIGN KEY (`categorie_id`) REFERENCES categorie(`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`cat_id`) REFERENCES categorie(`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 INSERT INTO `prestation` (`id`, `nom`, `descr`, `cat_id`, `img`, `prix`) VALUES
@@ -71,8 +71,8 @@ CREATE TABLE IF NOT EXISTS `coffret` (
   `remerciement` text,
   `url` text,
   `membre_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-  FOREIGN KEY (`paiement_id`) REFERENCES paiement(`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`paiement_id`) REFERENCES paiement(`id`),
   FOREIGN KEY (`membre_id`) REFERENCES memebre(`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
