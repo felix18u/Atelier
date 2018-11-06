@@ -27,7 +27,9 @@ select{
 
 
 
-@media (screen) and (max-width: 375px) {
+@media (max-width: 375px) {
+
+   
 
     .grid-article{
         display: grid;
@@ -36,16 +38,4 @@ select{
         grid-row-gap: .5em;
     }
 
-    img {
-        max-height: 100%;
-        width: 100%;
-      }
-    
-    button{
-        height: 50px;
-    }
-    
-    select{
-        height: 50px;
-    }
 }
