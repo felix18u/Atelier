@@ -20,7 +20,14 @@ class Prestation extends Model
         $this->price = $price;
     }
 
-    
+    public function comparePresta($presta2){
+        if((strcmp($this->name, $presta2->name) == 0) && (strcmp($this->categorie, $presta2->categorie) == 0)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     /**
      * Get the value of categorie
