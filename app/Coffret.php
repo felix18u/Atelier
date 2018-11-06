@@ -32,4 +32,20 @@ class Coffret extends Model
         $this->message = $message;
     }
 
+
+    /**
+     * Get the value of validate
+     */ 
+    public function getValidate()
+    {
+        return $this->validate;
+    }
+
+    /**
+     * Get the value of message
+     */ 
+    public function getMessage()
+    {
+        return $this->message;
+    }
 }
