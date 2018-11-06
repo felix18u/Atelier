@@ -20,8 +20,7 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `cat_id` int(11) NOT NULL,
   `img` text NOT NULL,
   `prix` decimal(5,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`cat_id`) REFERENCES categorie(`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 INSERT INTO `prestation` (`id`, `nom`, `descr`, `cat_id`, `img`, `prix`) VALUES
@@ -80,9 +79,7 @@ CREATE TABLE IF NOT EXISTS `coffret` (
   `remerciement` text,
   `url` text,
   `membre_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`paiement_id`) REFERENCES paiement(`id`),
-  FOREIGN KEY (`membre_id`) REFERENCES memebre(`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 
@@ -91,12 +88,21 @@ CREATE TABLE IF NOT EXISTS `paiement`(
   `type` boolean DEFAULT TRUE NOT NULL,
   `etat` boolean DEFAULT FALSE NOT NULL,
   `coffret_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 
 ALTER TABLE paiement
 ADD FOREIGN KEY (`coffret_id`) REFERENCES coffret(`id`); 
+
+ALTER TABLE prestation
+ADD FOREIGN KEY (`cat_id`) REFERENCES categorie(`id`) ;
+
+ALTER TABLE coffret
+ADD FOREIGN KEY (`membre_id`) REFERENCES membre(`id`);
+
+ALTER TABLE coffret
+ADD FOREIGN KEY (`paiement_id`) REFERENCES paiement(`id`);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
