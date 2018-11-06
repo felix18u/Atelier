@@ -36,7 +36,16 @@ select{
         grid-row-gap: .5em;
     }
 
-    img{
-        display: none;
+    img {
+        max-height: 100%;
+        width: 100%;
+      }
+    
+    button{
+        height: 50px;
+    }
+    
+    select{
+        height: 50px;
     }
 }
