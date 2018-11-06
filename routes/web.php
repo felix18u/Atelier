@@ -15,3 +15,4 @@ Auth::routes();
 
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/test','TestController@index');
+Route::get('/catalog', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
