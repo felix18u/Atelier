@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` text NOT NULL,
   `descr` text NOT NULL,
-  `categorie_id` int(11) NOT NULL,
+  `cat_id` int(11) NOT NULL,
   `img` text NOT NULL,
   `prix` decimal(5,2) NOT NULL,
   PRIMARY KEY (`id`)
