@@ -14,8 +14,7 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `cat_id` int(11) NOT NULL,
   `img` text NOT NULL,
   `prix` decimal(5,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`cat_id`) REFERENCES categorie(`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 INSERT INTO `prestation` (`id`, `nom`, `descr`, `cat_id`, `img`, `prix`) VALUES
@@ -58,41 +57,6 @@ INSERT INTO `categorie` (`id`, `nom`) VALUES
 (2, 'Activité'),
 (3, 'Restauration'),
 (4, 'Hébergement');
-
-
-CREATE TABLE IF NOT EXISTS `coffret` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` text NOT NULL,
-  `date` date,
-  `paiement_id` int(11) NOT NULL,
-  `etat` text NOT NULL,
-  `montantTotal` decimal(5,2),
-  `message` text,
-  `remerciement` text,
-  `url` text,
-  `membre_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`paiement_id`) REFERENCES paiement(`id`),
-  FOREIGN KEY (`membre_id`) REFERENCES memebre(`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
-
-
-CREATE TABLE IF NOT EXISTS `membre` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` text NOT NULL,
-  `password` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
-
-
-CREATE TABLE IF NOT EXISTS `paiement`(
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` boolean DEFAULT TRUE NOT NULL,
-  `etat` boolean DEFAULT FALSE NOT NULL,
-  `coffret_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`coffret_id`) REFERENCES coffret(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
