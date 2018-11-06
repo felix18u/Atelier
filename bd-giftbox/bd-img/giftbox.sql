@@ -11,10 +11,10 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` text NOT NULL,
   `descr` text NOT NULL,
-  `cat_id` int(11) NOT NULL,
+  `categorie_id` int(11) NOT NULL,
   `img` text NOT NULL,
   `prix` decimal(5,2) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
   FOREIGN KEY (`categorie_id`) REFERENCES categorie(`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
