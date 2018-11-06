@@ -27,7 +27,9 @@ select{
 
 
 
-@media (screen) and (max-width: 375px) {
+@media (max-width: 375px) {
+
+   
 
     .grid-article{
         display: grid;
@@ -36,7 +38,4 @@ select{
         grid-row-gap: .5em;
     }
 
-    img{
-        display: none;
-    }
 }
