@@ -9,13 +9,15 @@ class Coffret extends Model
 {
     private $prestations;
     private $validate;
+    private $date;
 
     private $message;
 
-    public function __construct($presta){
-        $this->prestations = [$prest];
+    public function __construct($presta,$date){
+        $this->prestations = [$presta];
         $this->validate = false;
         $this->message = Null;
+        $this->date = $date;
     }
 
     function validate(){
@@ -44,6 +46,14 @@ class Coffret extends Model
                 }
             }
         }
+    }
+
+    function givePrice(){
+        $price=0;
+        for($i=0;$i<$prestations.count();$i++){
+            $price+=$prestations[$i].getPrice();
+        }
+        return $price;
     }
 
     function setMessage($message){
