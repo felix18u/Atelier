@@ -6,6 +6,12 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
 
 CREATE TABLE IF NOT EXISTS `prestation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -14,8 +20,7 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `categorie_id` int(11) NOT NULL,
   `img` text NOT NULL,
   `prix` decimal(5,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`categorie_id`) REFERENCES categorie(`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 INSERT INTO `prestation` (`id`, `nom`, `descr`, `cat_id`, `img`, `prix`) VALUES
@@ -47,17 +52,20 @@ INSERT INTO `prestation` (`id`, `nom`, `descr`, `cat_id`, `img`, `prix`) VALUES
 (26, 'Planètes Laser', 'Laser game : Gilet électronique et pistolet laser comme matériel, vous voilà équipé.', 2, 'laser.jpg', '15.00'),
 (27, 'Fort Aventure', 'Découvrez Fort Aventure à Bainville-sur-Madon, un site Accropierre unique en Lorraine ! Des Parcours Acrobatiques pour petits et grands, Jeu Mission Aventure, Crypte de Crapahute, Tyrolienne, Saut à l''élastique inversé, Toboggan géant... et bien plus encore.', 2, 'fort.jpg', '25.00');
 
-CREATE TABLE IF NOT EXISTS `categorie` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 INSERT INTO `categorie` (`id`, `nom`) VALUES
 (1, 'Attention'),
 (2, 'Activité'),
 (3, 'Restauration'),
 (4, 'Hébergement');
+
+
+CREATE TABLE IF NOT EXISTS `membre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` text NOT NULL,
+  `password` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 
 CREATE TABLE IF NOT EXISTS `coffret` (
@@ -72,16 +80,6 @@ CREATE TABLE IF NOT EXISTS `coffret` (
   `url` text,
   `membre_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-  FOREIGN KEY (`paiement_id`) REFERENCES paiement(`id`)
-  FOREIGN KEY (`membre_id`) REFERENCES memebre(`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
-
-
-CREATE TABLE IF NOT EXISTS `membre` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` text NOT NULL,
-  `password` text NOT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 
@@ -90,9 +88,22 @@ CREATE TABLE IF NOT EXISTS `paiement`(
   `type` boolean DEFAULT TRUE NOT NULL,
   `etat` boolean DEFAULT FALSE NOT NULL,
   `coffret_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`coffret_id`) REFERENCES coffret(`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+
+
+ALTER TABLE paiement
+ADD FOREIGN KEY (`coffret_id`) REFERENCES coffret(`id`); 
+
+ALTER TABLE prestation
+ADD FOREIGN KEY (`cat_id`) REFERENCES categorie(`id`) ;
+
+ALTER TABLE coffret
+ADD FOREIGN KEY (`membre_id`) REFERENCES membre(`id`);
+
+ALTER TABLE coffret
+ADD FOREIGN KEY (`paiement_id`) REFERENCES paiement(`id`);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
