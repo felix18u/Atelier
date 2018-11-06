@@ -47,7 +47,11 @@
         <!-- Si connecté -->
         @auth
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}">Déconnexion</a>
+            <a class="nav-link" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+            </form>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Profil</a>
