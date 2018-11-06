@@ -19,7 +19,7 @@
   <body style="padding-top:50px">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">MyGiftBox</a>
+      <a class="navbar-brand" href="{{ route('home') }}">MyGiftBox</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,34 +27,48 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Accueil</a>
+            <a class="nav-link" href="{{ route('home') }}">Accueil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Catalogue</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Créer un coffret</a>
-          </li>
+          @auth
+            <li class="nav-item">
+              <a class="nav-link" href="#vraichemincoffret">Créer un coffret</a>
+            </li>
+          @else
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">Créer un coffret</a>
+            </li>
+          @endauth
         </ul>
         <ul class="navbar-nav ">
 
-        <!-- Si déconnecté -->
-          <li class="nav-item">
-            <a class="nav-link" href="#">Se connecter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">S'inscrire</a>
-          </li>
-        <!-- Fin -->
-
         <!-- Si connecté -->
+        @auth
           <li class="nav-item">
             <a class="nav-link" href="#">Déconnexion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Profil</a>
           </li>
+        
         <!-- Fin -->
+        @else
+        <!-- Si déconnecté -->
+
+        
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">Se connecter</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">S'inscrire</a>
+          </li>
+        
+        @endauth  
+        <!-- Fin -->
+
+        
 
         </ul>
       </div>
