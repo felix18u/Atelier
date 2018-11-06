@@ -30,7 +30,7 @@
             <a class="nav-link" href="{{ route('home') }}">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Catalogue</a>
+            <a class="nav-link" href="{{ route('catalog') }}">Catalogue</a>
           </li>
           @auth
             <li class="nav-item">
