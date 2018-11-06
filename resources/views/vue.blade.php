@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-3 text-center">My Gift Box</h1>
+        <h1 class="display-3">My Gift Box</h1>
     </div>
 
     <div class="container">
