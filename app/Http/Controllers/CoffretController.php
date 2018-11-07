@@ -22,9 +22,9 @@ class CoffretController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request,$cof_id)
     {
-        $coffret = DB::table('coffret')->where('id',"=",$request->user()->id)->get();
+        $coffret = DB::table('coffret')->where('users_id',"=",$request->user()->id)->where('id',"=",$cof_id)->get();
         return view('coffret',compact('coffret'));
     }
 

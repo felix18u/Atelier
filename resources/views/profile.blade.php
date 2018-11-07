@@ -44,6 +44,7 @@
 <br>
     <div class="container">
     @foreach($coffrets as $coffret)
+    <a href='.profile/coffret/{{$coffret->id}}'><button type="button" class="btn btn-primary">Modifier</button></a>
     <div>
         {{ $coffret->nom }}
     </div>

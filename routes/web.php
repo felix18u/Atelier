@@ -19,7 +19,7 @@ Route::get('/profile', ['as' => 'profile', 'uses' => 'ProfileController@index'])
 Route::post('/profile', 'ProfileController@store');
 Route::get('/catalog/{type?}', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
 
-Route::get('/coffret',['as' => 'coffret', 'uses' => 'CoffretController@index']);
+Route::get('/profile/coffret',['as' => 'coffret', 'uses' => 'CoffretController@index']);
 
 
 Route::get('/gift/{id}',['as' => 'gift', 'uses' => 'GiftController@index']);
