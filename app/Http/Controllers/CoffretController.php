@@ -38,9 +38,7 @@ class CoffretController extends Controller
             $prestas[] = DB::table('prestation')
             ->where('id', $panier[$i]->id_prestation)->get();
         }
-        /*$prestas = DB::table('prestation')
-        ->where('id', $panier->id_prestation)->get();*/
-        
+       
         return view('coffret', compact('box'), compact('prestas'));
     }
 }

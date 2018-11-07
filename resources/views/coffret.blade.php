@@ -27,7 +27,7 @@
                     <p>{{ $b->montantTotal }}</p>
                     @isset($prestas)
                         @for($i=0; $i < count($prestas); $i++)
-                        <img src="/img/{{ $prestas[$i]->img }}">
+                        <a href="/gift/{{ $prestas[$i][0]->id }}"><img src="{{ asset('img/'.$prestas[$i][0]->img) }}"></a>
                         <p>{{ $prestas[$i][0]->nom }}</p>
                         @endfor
                     @endisset
