@@ -18,10 +18,10 @@
     </div>
 
     <div class="container text-center">
-        <a href="/catalog/category/1"><button type="button" class="btn btn-primary">Catégorie 1</button></a>
-        <a href="/catalog/category/2"><button type="button" class="btn btn-primary">Catégorie 2</button></a>
-        <a href="/catalog/category/3"><button type="button" class="btn btn-primary">Catégorie 3</button></a>
-        <a href="/catalog/category/4"><button type="button" class="btn btn-primary">Catégorie 4</button></a>
+        <a href="/catalog/category/1"><button type="button" class="btn btn-primary">Attention</button></a>
+        <a href="/catalog/category/2"><button type="button" class="btn btn-primary">Activité</button></a>
+        <a href="/catalog/category/3"><button type="button" class="btn btn-primary">Restauration</button></a>
+        <a href="/catalog/category/4"><button type="button" class="btn btn-primary">Hébergement</button></a>
         <a href="/catalog/all"><button type="button" class="btn btn-primary">Toutes les Catégories</button></a>
     </div>
 
