@@ -31,12 +31,15 @@
             @foreach($gifts as $gift)
                 <div class="grid-article">
                     <a href="/gift/{{$gift->id}}"><img src="img/{{$gift->img}}"></a>
-                    <a href="/gift/{{$gift->id}}"><h2>{{$gift->nom}}</h2></a>
-                    <button>Ajouter au coffret</button>
+                    <a  class="nom" href="/gift/{{$gift->id}}"><h2>{{$gift->nom}}</h2></a>
+                    <p class="prix">{{$gift->prix}}</p>
+                    @auth
+                    <button class="btn">Ajouter</button>
                     <select name="coffrets">
-                        <option>coffret un</option>
-                        <option>coffret deux</option>
-                        <option>coffret trois</option>
+                        @foreach($boxes as $box)
+                            <option>{{ $box->nom }}</option>
+                        @endforeach
+                    @endauth
                     </select> 
                 </div>
             @endforeach
