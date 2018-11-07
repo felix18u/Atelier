@@ -23,8 +23,11 @@ class CreateCoffretTable extends Migration
             $table->text('remerciement');
             $table->string('url', 255);
             $table->integer('paiement_id')->nullable(false)->unsigned();
-            $table->foreign('paiement_id')->references('id')->on('paiement');
             $table->integer('users_id')->nullable(false)->unsigned();
+            $table->engine = 'InnoDB';
+        });
+        Schema::table('coffret', function(Blueprint $table) {
+            $table->foreign('paiement_id')->references('id')->on('paiement');
             $table->foreign('users_id')->references('id')->on('users');
         });
     }

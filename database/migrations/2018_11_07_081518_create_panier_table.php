@@ -15,8 +15,12 @@ class CreatePanierTable extends Migration
     {
         Schema::create('panier', function (Blueprint $table) {
             $table->integer('id_coffret')->nullable(false)->unsigned();
-            $table->foreign('id_coffret')->references('id')->on('coffret');
             $table->integer('id_prestation')->nullable(false)->unsigned();
+            $table->engine = 'InnoDB';
+        });
+
+        Schema::table('panier', function(Blueprint $table) {
+            $table->foreign('id_coffret')->references('id')->on('coffret');
             $table->foreign('id_prestation')->references('id')->on('prestation');
         });
     }

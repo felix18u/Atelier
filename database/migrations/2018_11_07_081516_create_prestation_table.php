@@ -18,9 +18,13 @@ class CreatePrestationTable extends Migration
             $table->string('nom', 255)->nullable(false);
             $table->text('descr')->nullable(false);
             $table->integer('cat_id')->nullable(false)->unsigned();
-            $table->foreign('cat_id')->references('id')->on('categorie');
             $table->string('img', 255)->nullable(false);
             $table->decimal('prix', 5, 2)->nullable(false);
+            $table->engine = 'InnoDB';
+        });
+
+        Schema::table('prestation', function(Blueprint $table) {
+            $table->foreign('cat_id')->references('id')->on('categorie');
         });
     }
 
