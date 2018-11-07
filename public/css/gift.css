@@ -1,0 +1,28 @@
+.grid-container{
+	display: grid;
+	grid-template-columns: 1fr, 1fr;
+	grid-template-rows: 1fr, 1fr;
+	grid-row-gap: 1em;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.grid-img{
+	grid-column : 1;
+	grid-row : 1;
+}
+
+.grid-descr{
+	grid-column : 2;
+	grid-row : 1;
+}
+
+.grid-cat_id{
+	grid-column : 1;
+	grid-row : 2;
+}
+
+.grid-prix{
+	grid-column : 2;
+	grid-row : 2;
+}
