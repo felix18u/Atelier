@@ -10,7 +10,9 @@ class GiftController extends Controller
     
     function index($id){
         $gifts = DB::table('prestation')->where('id',$id)->get();
-        return view('gift', compact('gifts'));
+        $cat = DB::table('categorie')->where('id', $gifts[0]->cat_id)->get();
+        
+        return view('gift', compact('gifts'), compact('cat'));
     }
 
 }

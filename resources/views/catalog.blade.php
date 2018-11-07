@@ -30,7 +30,7 @@
 
             @foreach($gifts as $gift)
                 <div class="grid-article">
-                    <a href="/gift/{{$gift->id}}"><img src="img/{{$gift->img}}"></a>
+                    <a href="/gift/{{$gift->id}}"><img src="/img/{{$gift->img}}"></a>
                     <a  class="nom" href="/gift/{{$gift->id}}"><h2>{{$gift->nom}}</h2></a>
                     <p class="prix">{{$gift->prix}}</p>
                     @auth

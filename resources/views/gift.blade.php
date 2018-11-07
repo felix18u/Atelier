@@ -19,9 +19,9 @@
 
         <div class="container">
             <div class="grid-container">
-                <p class="grid-img">img : {{$gift->img}}</p>
-                <p class="grid-descr">descr : {{$gift->descr}}</p>
-                <p class="grid-cat_id">cat_id : {{$gift->cat_id}}</p>
+                <img class="grid-img" src="/img/{{$gift->img}}">
+                <p class="grid-descr">description : {{$gift->descr}}</p>
+                <p class="grid-cat_id">Catégorie : {{ $cat[0]->nom }} ({{$gift->cat_id}}) </p>
                 <p class="grid-prix">prix : {{$gift->prix}}</p>
             </div>
         </div>
