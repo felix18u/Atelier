@@ -28,9 +28,10 @@ class CatalogController extends Controller
         return view('catalog', compact('gifts'));
     }
 
-    function getData() 
-    {
-        $data = DB::table('prestation')->get();
+    public function indexByCat($cat_id)
+    {   
+        $gifts = DB::table('prestation')->where('cat_id',$cat_id)->get();
+        return view('catalog', compact('gifts'));
     }
 
 }
