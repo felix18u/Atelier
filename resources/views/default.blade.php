@@ -34,7 +34,7 @@
           </li>
           @auth
             <li class="nav-item">
-              <a class="nav-link" href="#vraichemincoffret">Créer un coffret</a>
+              <a class="nav-link" href="{{ route('coffret')}}">Créer un coffret</a>
             </li>
           @else
             <li class="nav-item">
@@ -54,7 +54,7 @@
 
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profil</a>
+            <a class="nav-link" href="{{ route('profile') }}">Profil</a>
           </li>
         
         <!-- Fin -->
@@ -79,6 +79,9 @@
     </nav>
 
     <main role="main" style="padding-top:40px">
+
+
+
 
       @yield('content')
 
