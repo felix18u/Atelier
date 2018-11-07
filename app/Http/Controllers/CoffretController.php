@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CoffretController extends Controller
 {
@@ -21,8 +22,11 @@ class CoffretController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('coffret');
+        $coffret = DB::table('coffret')->where('id',"=",$request->user()->id)->get();
+        return view('coffret',compact('coffret'));
     }
+
+    /** public function putPresta(Request $request, $presta){*/
 }

@@ -17,6 +17,7 @@ Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('/profile', ['as' => 'profile', 'uses' => 'ProfileController@index']);
 Route::post('/profile', 'ProfileController@store');
+Route::get('/catalog/{type?}', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
 
 Route::get('/coffret',['as' => 'coffret', 'uses' => 'CoffretController@index']);
 
@@ -24,5 +25,5 @@ Route::get('/coffret',['as' => 'coffret', 'uses' => 'CoffretController@index']);
 Route::get('/gift/{id}',['as' => 'gift', 'uses' => 'GiftController@index']);
 
 
-Route::get('/catalog/all', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
-Route::get('/catalog/category/{cat_id}', ['as' => 'category', 'uses' => 'CatalogController@indexByCat']);
+Route::get('/catalog/all/{type?}', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
+Route::get('/catalog/category/{cat_id}/{type?}', ['as' => 'category', 'uses' => 'CatalogController@indexByCat']);

@@ -17,24 +17,28 @@
     </div>
 
     <div class="container">                             
+        
         <div class="grid-vertical">
             <div class="grid-coffret">
-                <h2>Nom de l'article</h2>
-                <p>Liste des prestation(nom)</p>
-                <p>Prix du coffret</p>
+                <h2>TEST</h2>
+                <p class='date'>date</p>
+                <p class='etat'>etat</p>
+                <p class='montant'>montant</p>
+                <p class='message'>MESSSAAAAAAGEEEE</p>
+                <p class='url'>url</p>
+                <p class='remerciement'>I'm thanking you</p>
             </div>
-
+        @foreach($coffret as $coffret)
             <div class="grid-coffret">
-                <h2>Nom de l'article</h2>
-                <p>Liste des prestation(nom)</p>
-                <p>Prix du coffret</p>
+                <h2>TEST{{$coffret->nom}}</h2>
+                <p class='date'>TEST {{$coffret->date}}</p>
+                <p class='etat'>TEST {{$coffret->etat}}</p>
+                <p class='montant'>TEST {{$coffret->montantTotal}}</p>
+                <p class='message'>TEST {{$coffret->message}}</p>
+                <p class='url'>TEST {{$coffret->url}}</p>
+                <p class='remerciement'>TEST {{$coffret->remerciement}}</p>
             </div>
-
-            <div class="grid-coffret">
-                <h2>Nom de l'article</h2>
-                <p>Liste des prestation(nom)</p>
-                <p>Prix du coffret</p>
-            </div>
+        @endforeach
         </div>
     </div>
 @endsection
