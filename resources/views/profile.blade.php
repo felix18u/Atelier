@@ -11,10 +11,11 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-3">Mon profil</h1>
+        <h1 class="display-3 text-center">Mon profil</h1>
     </div>
     <br>
     <div class="container">
+        <div class="form">
         <form method="POST" action="{{ url('profile') }}">
             {{ csrf_field() }}
             <input type="hidden" name="id" value="{{ Auth::user()->id }}"/>
@@ -29,27 +30,55 @@
             <br>
             <input type="submit" value="Valider les modifications"/>
         </form>
+        </div>
     </div>
 
-@isset($var)
-<br>
-<div class="container">
-    <p>Vos modifications ont bien été prises en compte.</p>
-</div>
-@endisset
-<br>
-<div class="container">
-    <h1 class="display-3">Mes coffrets</h1>
-</div>
-<br>
+    @isset($var)
+    <br>
     <div class="container">
-    @foreach($coffrets as $coffret)
-    <a href='.profile/coffret/{{$coffret->id}}'><button type="button" class="btn btn-primary">Modifier</button></a>
-    <div>
-        {{ $coffret->nom }}
+        <p>Vos modifications ont bien été prises en compte.</p>
     </div>
-    @endforeach
-    <!-- Liste des coffrets -->
-    </div> 
+    @endisset
+    <br>
+    <div class="container">
+        <h1 class="display-3 text-center">Mes coffrets</h1>
+    </div>
+    <br>
+    
+        <div class="container">  
+        @if(count($coffrets) != 0)                           
+            <div class="grid-vertical">
+            <div class="grid-vertical">
+                    <div class="grid-article">
+                        <p>Nom du coffret</p>
+                        <p>Etat du coffret</p>
+                        <p>Montant total</p>
+                    </div>
+                </div>
+            @foreach($coffrets as $coffret)
+                <a href='.profile/coffret/{{$coffret->id}}'><button type="button" class="btn btn-primary">Modifier</button></a>
+                <div class="grid-vertical">
+                    <div class="grid-article">
+                        <p>{{$coffret->nom}}</p>
+                        <p>{{ $coffret->etat }}</p>
+                        <p>{{ $coffret->montantTotal }}€</p>
+                        <a href="/coffret/{{ $coffret->id }}"><button>Voir</button></a>
+                    </div>
+                </div>
+            @endforeach
+            </div>
+        
+    
+        @else
+            
+                <div class="form">
+                    <p>Vous n'avez contribué à aucun coffret pour l'instant.</p>
+                    </div>
+                </div>
+        @endif
+            <div class="form">
+                <a href="{{ url('createBox') }}"><button>Créer un coffret</button></a>
+            </div>
+        </div>
 
 @endsection
