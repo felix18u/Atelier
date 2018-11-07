@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CatalogController extends Controller
 {
@@ -22,7 +23,14 @@ class CatalogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('catalog');
+    {   
+        $gifts = DB::table('prestation')->get();
+        return view('catalog', compact('gifts'));
     }
+
+    function getData() 
+    {
+        $data = DB::table('prestation')->get();
+    }
+
 }
