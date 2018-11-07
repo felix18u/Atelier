@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\DB;
 class GiftController extends Controller
 {
     
-    function getData() 
-    {
-        $data = DB::table('prestation')->get();
-        var_dump($data[0]->nom);
+    function index($id){
+        $gifts = DB::table('prestation')->where('id',$id)->get();
+        $cat = DB::table('categorie')->where('id', $gifts[0]->cat_id)->get();
+        
+        return view('gift', compact('gifts'), compact('cat'));
     }
 
 }

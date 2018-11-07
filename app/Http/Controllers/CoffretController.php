@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+=======
+>>>>>>> 894d36a37d47243a6196430b84f58963420d17c1
 
 class CoffretController extends Controller
 {
@@ -23,9 +26,10 @@ class CoffretController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('coffret');
+        $coffret = DB::table('coffret')->where('id',"=",$request->user()->id)->get();
+        return view('coffret',compact('coffret'));
     }
 
     public function afficher($id_coffret){
