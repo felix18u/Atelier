@@ -34,7 +34,7 @@
           </li>
           @auth
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('coffret')}}">Créer un coffret</a>
+              <a class="nav-link" href="{{ route('createBox')}}">Créer un coffret</a>
             </li>
           @else
             <li class="nav-item">
