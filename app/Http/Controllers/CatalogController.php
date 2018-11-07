@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class CatalogController extends Controller
 {
@@ -31,6 +32,16 @@ class CatalogController extends Controller
     function getData() 
     {
         $data = DB::table('prestation')->get();
+    }
+
+    function getDataCroissant(){
+        $gifts = DB::table('prestation')->orderBy('prix','asc')->get();
+        return view('catalog', compact('gifts'));
+    }
+
+    function getDataDecroissant(){
+        $gifts = DB::table('prestation')->orderBy('prix','desc')->get();
+        return view('catalog', compact('gifts'));
     }
 
 }
