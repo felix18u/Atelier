@@ -18,11 +18,11 @@
 
     <div class="container">
         <div class="grid-container">
-            <button class="grid-item grid-item1" href="/catalog/all">Toutes les catégories</button>
-            <button class="grid-item grid-item" href="/catalog/category/1">Attention</button>
-            <button class="grid-item grid-item" href="/catalog/category/2">Activité</button>
-            <button class="grid-item grid-item" href="/catalog/category/3">Restauration</button>
-            <button class="grid-item grid-item" href="/catalog/category/4">Hébergement</button>
+            <a href="/catalog/all" class="grid-item grid-item1"><h1 class="text-center">Toutes les catégories</h1></a>
+            <a href="/catalog/category/1" class="grid-item "><h1 class="text-center">Attention</h1></a>
+            <a href="/catalog/category/2" class="grid-item "><h1 class="text-center">Activité</h1></a>
+            <a href="/catalog/category/3" class="grid-item "><h1 class="text-center">Restauration</h1></a>
+            <a href="/catalog/category/4" class="grid-item "><h1 class="text-center">Hébergement</h1></a>
         </div>
     </div>
 @endsection
