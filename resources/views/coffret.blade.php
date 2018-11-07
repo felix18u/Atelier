@@ -25,9 +25,12 @@
                     <h2>{{ $b->nom }}</h2>
                     <p>{{ $b->etat }}</p>
                     <p>{{ $b->montantTotal }}</p>
-                    @for($i=0; $i < count($prestas); $i++)
-                    <p>{{ $prestas[$i][0]->nom }}</p>
-                    @endfor
+                    @isset($prestas)
+                        @for($i=0; $i < count($prestas); $i++)
+                        <img src="/img/{{ $prestas[$i]->img }}">
+                        <p>{{ $prestas[$i][0]->nom }}</p>
+                        @endfor
+                    @endisset
                 </div>
         @else
                 <div class="form">
