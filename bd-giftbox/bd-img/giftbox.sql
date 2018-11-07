@@ -92,14 +92,11 @@ CREATE TABLE IF NOT EXISTS `paiement`(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 
-ALTER TABLE paiement
-ADD FOREIGN KEY (`coffret_id`) REFERENCES coffret(`id`); 
-
 ALTER TABLE prestation
 ADD FOREIGN KEY (`cat_id`) REFERENCES categorie(`id`) ;
 
 ALTER TABLE coffret
-ADD FOREIGN KEY (`membre_id`) REFERENCES membre(`id`);
+ADD FOREIGN KEY (`users_id`) REFERENCES users(`id`);
 
 ALTER TABLE coffret
 ADD FOREIGN KEY (`paiement_id`) REFERENCES paiement(`id`);
