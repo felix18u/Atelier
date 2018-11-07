@@ -10,6 +10,7 @@
     grid-template-rows: 1fr;
     grid-row-gap: 1em;
     margin-bottom: 10px;
+    align-items: center;
 }
 
 img {
@@ -27,7 +28,9 @@ select{
 
 
 
-@media (screen) and (max-width: 375px) {
+@media (max-width: 375px) {
+
+   
 
     .grid-article{
         display: grid;
@@ -36,7 +39,4 @@ select{
         grid-row-gap: .5em;
     }
 
-    img{
-        display: none;
-    }
 }
