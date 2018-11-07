@@ -44,7 +44,7 @@
                 <div class="grid-article">
                     <a href="/gift/{{$gift->id}}"><img src="{{ asset('img/'.$gift->img) }}"></a>
                     <a  class="nom" href="/gift/{{$gift->id}}"><h2>{{$gift->nom}}</h2></a>
-                    <p class="prix">{{$gift->prix}}</p>
+                    <p class="prix">{{$gift->prix}}€</p>
                     @auth
                     <button class="btn">Ajouter</button>
                     <select name="coffrets">
