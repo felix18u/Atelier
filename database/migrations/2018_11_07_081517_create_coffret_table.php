@@ -16,12 +16,12 @@ class CreateCoffretTable extends Migration
         Schema::create('coffret', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom', 255)->nullable(false);
-            $table->date('date');
+            $table->date('date')->nullable(true);
             $table->string('etat',255)->nullable(false);
-            $table->decimal('montantTotal', 5, 2);
-            $table->text('message');
-            $table->text('remerciement');
-            $table->string('url', 255);
+            $table->decimal('montantTotal', 5, 2)->nullable(true);
+            $table->text('message')->nullable(true);
+            $table->text('remerciement')->nullable(true);
+            $table->string('url', 255)->nullable(true);
             $table->integer('paiement_id')->nullable(false)->unsigned();
             $table->integer('users_id')->nullable(false)->unsigned();
             $table->engine = 'InnoDB';

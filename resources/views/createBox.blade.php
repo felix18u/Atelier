@@ -20,7 +20,7 @@
             {{ csrf_field() }}
             <label for="name"> Nom du coffret :</label>
             <br>
-            <input type="text" name="name" id="name" pattern="[a-z]{1,}" required/>
+            <input type="text" name="name" id="name" required/>
             <br>
             <label for="date">Date d'ouverture du coffret (facultatif) :</label>
             <br>
