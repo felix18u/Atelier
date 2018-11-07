@@ -48,12 +48,20 @@
         <div class="container">  
         @if(count($coffrets) != 0)                           
             <div class="grid-vertical">
+            <div class="grid-vertical">
+                    <div class="grid-article">
+                        <p>Nom du coffret</p>
+                        <p>Etat du coffret</p>
+                        <p>Montant total</p>
+                    </div>
+                </div>
             @foreach($coffrets as $coffret)
                 <div class="grid-vertical">
                     <div class="grid-article">
-                        <a href=""><p>{{$coffret->nom}}</p></a>
+                        <p>{{$coffret->nom}}</p>
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
+                        <a href="/coffret/{{ $coffret->id }}"><button>Voir</button></a>
                     </div>
                 </div>
             @endforeach

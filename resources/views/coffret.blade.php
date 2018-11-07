@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Accueil
+    Coffret
 @endsection
 
 
@@ -16,25 +16,37 @@
         <h1 class="display-3 text-center">Coffret</h1>
     </div>
 
-    <div class="container">                             
-        <div class="grid-vertical">
-            <div class="grid-coffret">
-                <h2>Nom de l'article</h2>
-                <p>Liste des prestation(nom)</p>
-                <p>Prix du coffret</p>
-            </div>
+    @foreach($box as $b)
+    @isset(Auth::user()->id)
+        @if($b->users_id == Auth::user()->id )
+        <div class="container">                             
+            <div class="grid-vertical">
+                <div class="grid-coffret">
+                    <h2>{{ $b->nom }}</h2>
+                    <p>{{ $b->etat }}</p>
+                    <p>{{ $b->montantTotal }}</p>
+                    @for($i=0; $i < count($prestas); $i++)
+                    <p>{{ $prestas[$i][0]->nom }}</p>
+                    @endfor
+                </div>
+        @else
+                <div class="form">
+                    <p>Vous n'avez pas le droit d'accéder à ce coffret.</p>
+                    </div>
+                </div>
+        @endif
 
-            <div class="grid-coffret">
-                <h2>Nom de l'article</h2>
-                <p>Liste des prestation(nom)</p>
-                <p>Prix du coffret</p>
-            </div>
+    @endisset
 
-            <div class="grid-coffret">
-                <h2>Nom de l'article</h2>
-                <p>Liste des prestation(nom)</p>
-                <p>Prix du coffret</p>
+    @empty(Auth::user()->id)
+            <div class="form">
+                <p>Vous devez vous connecter.</p>
+                </div>
             </div>
+    @endempty
+
+    @endforeach
+
         </div>
     </div>
 @endsection
