@@ -34,17 +34,29 @@ class CatalogController extends Controller
         return view('catalog', compact('gifts'), compact('boxes'));
         if($type==null){
             $gifts = DB::table('prestation')->get();
+            if(Auth::check()){
             $boxes = DB::table('coffret')->where( 'users_id', Auth::user()->id )->get();
+            } else {
+                $boxes = "";
+            }
             return view('catalog', compact('gifts'), compact('boxes'));
         }
         else if($type=='croissant'){
             $gifts = DB::table('prestation')->orderBy('prix','asc')->get();
+            if(Auth::check()){
             $boxes = DB::table('coffret')->where( 'users_id', Auth::user()->id )->get();
+            } else {
+                $boxes = "";
+            }
             return view('catalog', compact('gifts'),compact('boxes'));  
         }
         else if($type == 'decroissant'){
             $gifts = DB::table('prestation')->orderBy('prix','desc')->get();
+            if(Auth::check()){
             $boxes = DB::table('coffret')->where( 'users_id', Auth::user()->id )->get();
+            } else {
+                $boxes = "";
+            }
             return view('catalog', compact('gifts'),compact('boxes'));
         }
     }
@@ -53,17 +65,29 @@ class CatalogController extends Controller
     {  
         if($type==null){
             $gifts = DB::table('prestation')->where('cat_id',$cat_id)->get();
-            $boxes = DB::table('coffret')->where( 'users_id', Auth::user()->id )->get();
+            if(Auth::check()){
+                $boxes = DB::table('coffret')->where( 'users_id', Auth::user()->id )->get();
+            } else {
+                $boxes = "";
+            }
             return view('catalog', compact('gifts'), compact('boxes'));
         }
         else if($type=='croissant'){
             $gifts = DB::table('prestation')->where('cat_id',$cat_id)->orderBy('prix','asc')->get();
+            if(Auth::check()){
             $boxes = DB::table('coffret')->where( 'users_id', Auth::user()->id )->get();
+            } else {
+                $boxes = "";
+            }
             return view('catalog', compact('gifts'),compact('boxes'));  
         }
         else if($type == 'decroissant'){
             $gifts = DB::table('prestation')->where('cat_id',$cat_id)->orderBy('prix','desc')->get();
+            if(Auth::check()){
             $boxes = DB::table('coffret')->where( 'users_id', Auth::user()->id )->get();
+            } else {
+                $boxes = "";
+            }
             return view('catalog', compact('gifts'),compact('boxes'));
         }
     }
