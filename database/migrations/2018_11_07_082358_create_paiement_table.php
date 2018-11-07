@@ -17,7 +17,6 @@ class CreatePaiementTable extends Migration
             $table->increments('id');
             $table->boolean('type')->default(true)->nullable(false);
             $table->boolean('etat')->default(false)->nullable(false);
-            $table->integer('coffret_id')->nullable(false);
         });
     }
 
