@@ -18,7 +18,9 @@ class ProfileController extends Controller
     
     public function index()
     {
-        return view('profile');
+        $coffrets = DB::table('coffret')
+        ->where('users_id',  Auth::user()->id)->get();
+        return view('profile', compact('coffrets'));
     }
 
  
@@ -26,7 +28,11 @@ class ProfileController extends Controller
     {
         DB::table('users')
         ->where('id', $request->input('id'))
-        ->update(['name' => $request->input('name')])
-        ->update(['email' => $request->input('email')]);   
+        ->update(['name' => $request->input('name')]);
+
+        DB::table('users')
+        ->where('id', $request->input('id'))
+        ->update(['email' => $request->input('email')]); 
+        return view('profile', ['var' => true]);
      }
 }

@@ -31,8 +31,24 @@
         </form>
     </div>
 
+@isset($var)
+<br>
+<div class="container">
+    <p>Vos modifications ont bien été prises en compte.</p>
+</div>
+@endisset
+<br>
+<div class="container">
+    <h1 class="display-3">Mes coffrets</h1>
+</div>
+<br>
     <div class="container">
-
+    @foreach($coffrets as $coffret)
+    <div>
+        {{ $coffret->nom }}
+    </div>
+    @endforeach
+    <!-- Liste des coffrets -->
     </div> 
 
 @endsection
