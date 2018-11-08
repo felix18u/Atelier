@@ -60,7 +60,7 @@
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
                         <a href="/coffret/{{ $coffret->id }}"><button>Voir</button></a>
-                        <a href='/profile/coffret/{{$coffret->id}}'><button>Modifier</button></a>
+                        <a href='/coffret/{{$coffret->id}}'><button>Modifier</button></a>
                     </div>
                 </div>
             @endforeach
