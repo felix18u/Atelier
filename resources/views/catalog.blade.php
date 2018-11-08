@@ -50,7 +50,7 @@
                     <form method="POST" action="">
                         {{ csrf_field() }}
                         <input type="hidden" value="{{ $gift->id }}" name="presta" id="presta"/>
-                        <input type="submit" value="Ajouter" class="btn"/>
+                        <input type="submit" value="Ajouter" class="btn btn-secondary"/>
                         <select name="coffrets" id="coffrets">
                             @foreach($boxes as $box)
                                 <option value="{{ $box->id }}">{{ $box->nom }}</option>

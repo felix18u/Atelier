@@ -76,7 +76,8 @@
                         <p>{{$coffret->nom}}</p>
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
-                        <a href="/coffret/{{ $coffret->id }}"><button>Voir</button></a>
+                        <a href="/coffret/{{ $coffret->id }}"><button class="btn btn-secondary">Voir</button></a>
+                        <a href="/profile/{{ $coffret->id }}"><button class="btn btn-secondary">Supprimer</button></a>
                     </div>
                 </div>
             @endforeach
@@ -84,14 +85,14 @@
         
     
         @else
-            
+
                 <div class="form">
                     <p>Vous n'avez contribué à aucun coffret pour l'instant.</p>
                     </div>
                 </div>
         @endif
             <div class="form">
-                <a href="{{ url('createBox') }}"><button>Créer un coffret</button></a>
+                <a href="{{ url('createBox') }}"><button class="btn btn-secondary">Créer un coffret</button></a>
             </div>
         </div>
 
