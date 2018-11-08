@@ -100,7 +100,7 @@ class CatalogController extends Controller
         );
        
         $message = "La prestation a bien été ajoutée a votre coffret";
-        return CatalogController::index('all');
+        return CatalogController::index();
     }
 
 }
