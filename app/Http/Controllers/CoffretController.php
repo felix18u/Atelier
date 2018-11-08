@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CoffretController extends Controller
 {
@@ -74,5 +75,16 @@ class CoffretController extends Controller
         ->update(['montantTotal' => $total]);
 
         return CoffretController::afficher($id_coffret);
+    }
+
+    public function coffretValidate(Request $request) {
+        /* Génération de l'url */
+        $nom_coffret = DB::table('coffret')
+        ->where('id', $request->id)
+        ->select('nom')->get();
+        $url = '/ouvrirCoffret/'.sha1(Auth::user()->nom + $request->id + $nomcoffret[0]->nom);
+        DB::table('coffret')
+        ->where('id', $request->id)
+        ->update(['url' => $url]);
     }
 }

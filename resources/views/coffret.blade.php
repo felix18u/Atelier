@@ -73,21 +73,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <p>Montant total: {{ $b->montantTotal }}€</p>
                 </div>
         @else
@@ -107,8 +92,14 @@
     @endempty
 
     @endforeach
-    <a href=""><button id="valider">Valider</button></a>
     <a href="{{ url('profile') }}"><button type="button" class="btn btn-secondary">Retour</button></a>
+    @isset($box[0]->url)
+        <button type="button" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';">Générer l'url</button>
+        <span class="url" id="url">$box[0]->url</span>
+    @endisset
+    @empty($box[0]->url)
+        <a href=""><button type="button" id="valider">Valider</button></a>
+    @endempty
+            </div>
         </div>
-    </div>
 @endsection
