@@ -31,7 +31,7 @@
                         <a href="/gift/{{ $prestas[$i][0]->id }}"><img src="{{ asset('img/'.$prestas[$i][0]->img) }}"></a>
                         <a class="nom" href="/gift/{{ $prestas[$i][0]->id }}"><p>{{ $prestas[$i][0]->nom }}</p></a>
                         <p class="prix">{{ $prestas[$i][0]->prix }}€</p>
-                        <a href="/coffret/suppr/{{ $b->id }}/{{ $prestas[$i][0]->id }}"><button class="btn">Supprimer</button></a>
+                        <a href="/coffret/suppr/{{ $b->id }}/{{ $prestas[$i][0]->id }}"><button class="btn btn-secondary">Supprimer</button></a>
                         </div>
                         
                         @endfor
@@ -50,7 +50,7 @@
                                                     <div class="form-group row">
                                                         <label for="message" class="col-sm-4 col-form-label text-md-right">Votre message :</label>
                                                         <div class="col-md-6">
-                                                            <input type="textarea" name="message" id="message" value="{{ $b->message }}"/>
+                                                            <textarea name="message" id="message">{{ $b->message }}</textarea>
                                                         </div>
                                                     </div>
                                                     
@@ -73,21 +73,7 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        
                     <p>Montant total: {{ $b->montantTotal }}€</p>
                 </div>
         @else
@@ -107,8 +93,8 @@
     @endempty
 
     @endforeach
-    <a href=""><button id="valider">Valider</button></a>
     <a href="{{ url('profile') }}"><button type="button" class="btn btn-secondary">Retour</button></a>
+    <a href=""><button id="valider" class="btn btn-secondary">Valider</button></a>
         </div>
     </div>
 @endsection
