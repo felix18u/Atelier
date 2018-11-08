@@ -41,4 +41,18 @@ class CoffretController extends Controller
        
         return view('coffret', compact('box'), compact('prestas'));
     }
+
+    public function modifier(Request $request){
+        DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['message' => $request->input('message')]);
+
+        DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['date' => $request->input('date')]);
+        
+        //$id =  afficher($request->input('id'));
+
+        return CoffretController::afficher($request->input('id'));
+    }
 }
