@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class CoffretController extends Controller
 {
@@ -39,9 +38,7 @@ class CoffretController extends Controller
             $prestas[] = DB::table('prestation')
             ->where('id', $panier[$i]->id_prestation)->get();
         }
-        /*$prestas = DB::table('prestation')
-        ->where('id', $panier->id_prestation)->get();*/
-        
+       
         return view('coffret', compact('box'), compact('prestas'));
     }
 }
