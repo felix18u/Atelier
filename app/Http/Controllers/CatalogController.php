@@ -85,4 +85,22 @@ class CatalogController extends Controller
         }
     }
 
+    public function addPresta(Request $request) {
+        DB::table('panier')->insert(
+            ['id_coffret' => $request->coffrets, 'id_prestation' => $request->presta]
+        );
+        $prixbox = DB::table('coffret')
+            ->where('id', '=',  $request->coffrets)
+            ->select('montantTotal')->get();
+        $prixpresta = DB::table('prestation')
+            ->where('id', '=',  $request->presta)
+            ->select('prix')->get();
+        DB::table('coffret')->where('id', '=',  $request->coffrets)->update(
+            ['montantTotal' => $prixbox[0]->montantTotal + $prixpresta[0]->prix]
+        );
+       
+        $message = "La prestation a bien été ajoutée a votre coffret";
+        return CatalogController::index('all');
+    }
+
 }
