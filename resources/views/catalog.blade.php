@@ -44,15 +44,17 @@
                 <div class="grid-article">
                     <a href="/gift/{{$gift->id}}"><img src="{{ asset('img/'.$gift->img) }}"></a>
                     <a  class="nom" href="/gift/{{$gift->id}}"><h2>{{$gift->nom}}</h2></a>
-                    <p class="prix">{{$gift->prix}}</p>
+                    <p class="prix">{{$gift->prix}}€</p>
                     @auth
-                    <a href="{{ url('/addPresta/1')}}"> <button class="btn">Ajouter</button> </a>
-                    <select name="coffrets">
-                        @foreach($boxes as $box)
-                            <option>{{ $box->nom }}</option>
-                        @endforeach
-                    @endauth
-                    </select> 
+                    <form method="POST" action="{{ url('/addPresta/'.$gift->id) }}">
+                        <input type="submit" value="Ajouter" class="btn"/>
+                        <select name="coffrets">
+                            @foreach($boxes as $box)
+                                <option value="{{ $box->id }}">{{ $box->nom }}</option>
+                            @endforeach
+                        @endauth
+                        </select>
+                    </form> 
                 </div>
             @endforeach
             

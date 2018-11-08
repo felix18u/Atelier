@@ -21,6 +21,7 @@ Route::get('/catalog/{type?}', ['as' => 'catalog', 'uses' => 'CatalogController@
 
 Route::get('/coffret',['as' => 'coffret', 'uses' => 'CoffretController@index']);
 Route::get('/coffret/{id_coffret}', 'CoffretController@afficher');
+Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
 Route::get('/createBox', ['as' => 'createBox', 'uses' => 'CreateBoxController@index']);
 Route::post('/createBox', ['as' => 'createBox', 'uses' => 'CreateBoxController@addBox']);
 
@@ -31,4 +32,6 @@ Route::get('/gift/{id}',['as' => 'gift', 'uses' => 'GiftController@index']);
 Route::get('/catalog/all/{type?}', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
 Route::get('/catalog/category/{cat_id}/{type?}', ['as' => 'category', 'uses' => 'CatalogController@indexByCat']);
 
-Route::get('/addPresta/{coffret}',['as' => 'addPresta', 'uses' => 'AddPrestationController@index']);
+Route::post('/addPresta/{coffret}',['as' => 'addPresta', 'uses' => 'AddPrestationController@index']);
+
+Route::redirect('/','/home');
