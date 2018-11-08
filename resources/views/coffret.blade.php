@@ -94,10 +94,10 @@
     @endforeach
     <a href="{{ url('profile') }}"><button type="button" class="btn btn-secondary">Retour</button></a>
     @if(strlen($box[0]->url) != 0)
-        <button type="button" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';">Générer l'url</button>
+        <button type="button" class="btn btn-secondary" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';">Générer l'url</button>
         <span class="url" id="url">{{ $box[0]->url }}</span>
     @else
-    <a href="{{ url('/coffret/coffretValidate/'.$box[0]->id) }}"><button id="valider">Valider</button></a>
+    <a href="{{ url('/coffret/coffretValidate/'.$box[0]->id) }}"><button class="btn btn-secondary" id="valider">Valider</button></a>
     @endif
             </div>
         </div>
