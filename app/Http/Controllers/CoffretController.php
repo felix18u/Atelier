@@ -85,7 +85,7 @@ class CoffretController extends Controller
         ->where('id_coffret', $id_coffret);
         
 
-      /* if(count($panier->id_prestation)>=2){
+      if(count($panier->id_prestation)>=2){
            $diffCat = false;
             $presta = DB::table('prestation')
             ->where('id', $id_prestation)->get();
@@ -95,13 +95,13 @@ class CoffretController extends Controller
                     break;
                 }
             }
-            if($diffCat){ */
+            if($diffCat){ 
                 return view('coffretValidate', compact('box'));
-            /** }
+             }
             else{
                 return view('coffret', compact('box'));
             }
-        }*/
+        }
 
     }
 
