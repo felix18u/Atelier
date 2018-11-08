@@ -97,7 +97,7 @@
         <button type="button" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';">Générer l'url</button>
         <span class="url" id="url">{{ $box[0]->url }}</span>
     @else
-        <a href=""><button type="button" id="valider">Valider</button></a>
+    <a href="{{ url('/coffret/coffretValidate/'.$box[0]->id) }}"><button id="valider">Valider</button></a>
     @endif
             </div>
         </div>

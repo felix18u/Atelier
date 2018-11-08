@@ -85,7 +85,7 @@ class CoffretController extends Controller
         ->where('id_coffret', $id_coffret);
         
 
-       if(count($panier->id_prestation)>=2){
+      /* if(count($panier->id_prestation)>=2){
            $diffCat = false;
             $presta = DB::table('prestation')
             ->where('id', $id_prestation)->get();
@@ -95,13 +95,13 @@ class CoffretController extends Controller
                     break;
                 }
             }
-            if($diffCat){
+            if($diffCat){ */
                 return view('coffretValidate', compact('box'));
-            }
+            /** }
             else{
                 return view('coffret', compact('box'));
             }
-        }
+        }*/
 
     }
 
@@ -123,10 +123,10 @@ class CoffretController extends Controller
         }
        
         /* Génération de l'url */
-        $nom_coffret = DB::table('coffret')
+        $nomcoffret = DB::table('coffret')
         ->where('id', $request->id)
         ->select('nom')->get();
-        $url = '/ouvrirCoffret/'.sha1(Auth::user()->nom + $request->id + $nomcoffret[0]->nom);
+        $url = '/ouvrirCoffret/'.sha1(''.Auth::user()->nom.$request->id.$nomcoffret[0]->nom);
         DB::table('coffret')
         ->where('id', $request->id)
         ->update(['url' => $url]);
