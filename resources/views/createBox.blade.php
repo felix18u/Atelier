@@ -15,24 +15,44 @@
     </div>
     
     <div class="container">
-        <div class="form">
-        <form method="POST" action="">
-            {{ csrf_field() }}
-            <label for="name"> Nom du coffret :</label>
-            <br>
-            <input type="text" name="name" id="name" required/>
-            <br>
-            <label for="date">Date d'ouverture du coffret (facultatif) :</label>
-            <br>
-            <input type="date" name="date" id="date" />
-            <br>
-            <label for="message">Votre message (facultatif) :</label>
-            <br>
-            <input type="textarea" name="message" id="message" />
-            <br>
-            <br>
-            <input type="submit" value="Créer le coffret"/>
-        </form>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Créer un coffret</div>
+                        <div class="card-body">
+                            <form method="POST" action="">
+                                {{ csrf_field() }}
+                                <div class="form-group row">
+                                <label for="name" class="col-sm-4 col-form-label text-md-right"> Nom du coffret :</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="name" id="name" required/>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                <label for="date" class="col-sm-4 col-form-label text-md-right">Date d'ouverture (facultatif) :</label>
+                                    <div class="col-md-6">
+                                        <input type="date" name="date" id="date" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                <label for="message" class="col-sm-4 col-form-label text-md-right">Votre message (facultatif) :</label>
+                                    <div class="col-md-6">
+                                        <textarea name="message" id="message" rows="5" cols="30"> </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <input type="submit" value="Créer le coffret"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

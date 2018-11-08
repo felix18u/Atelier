@@ -37,24 +37,56 @@
                         @endfor
                     @endisset
                     <br>
+
                     <div class="container">
-                        <div class="form">
-                        <form method="POST" action="/coffret/{{ $b->id }}">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="id" value="{{ $b->id }}" />
-                            <label for="message">Votre message :</label>
-                            <br>
-                            <input type="textarea" name="message" id="message" value="{{ $b->message }}"/>
-                            <br>
-                            <label for="date">Date d'ouverture du coffret :</label>
-                            <br>
-                            <input type="date" name="date" id="date" value="{{ $b->date }}"/>
-                            <br>
-                            <br>
-                            <input type="submit" value="Valider les modification"/>
-                        </form>
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">Modifier le coffret</div>
+                                            <div class="card-body">
+                                                <form method="POST" action="/coffret/{{ $b->id }}">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="id" value="{{ $b->id }}" />
+                                                    <div class="form-group row">
+                                                        <label for="message" class="col-sm-4 col-form-label text-md-right">Votre message :</label>
+                                                        <div class="col-md-6">
+                                                            <textarea  name="message" id="message">{{ $b->message }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                    <label for="date" class="col-sm-4 col-form-label text-md-right">Date d'ouverture du coffret :</label>
+                                                        <div class="col-md-6">
+                                                            <input type="date" name="date" id="date" value="{{ $b->date }}"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-0">
+                                                        <div class="col-md-8 offset-md-4">
+                                                            <input type="submit" value="Valider les modifications"/>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <p>Montant total: {{ $b->montantTotal }}€</p>
                 </div>
