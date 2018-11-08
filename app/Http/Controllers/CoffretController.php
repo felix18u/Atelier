@@ -51,8 +51,24 @@ class CoffretController extends Controller
         ->where('id', $request->input('id'))
         ->update(['date' => $request->input('date')]);
         
-        //$id =  afficher($request->input('id'));
-
         return CoffretController::afficher($request->input('id'));
+    }
+
+    public function delete($id_coffret, $id_prestation){
+        $box = DB::table('coffret')
+        ->where('id', $id_coffret)->get();
+
+        $presta = DB::table('prestation')
+        ->where('id', $id_prestation)->get();
+
+        $panier = DB::table('panier')
+        ->where('id_coffret', $id_coffret)
+        ->where('id_prestation', $id_prestation)->delete();
+        /*for($i = 0; $i < count($panier); $i++){
+            DB::table('prestation')
+            ->where('id', $id_prestation)->get()->delete;
+        }*/
+
+        return CoffretController::afficher($id_coffret);
     }
 }
