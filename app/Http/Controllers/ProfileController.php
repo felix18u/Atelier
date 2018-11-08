@@ -33,7 +33,7 @@ class ProfileController extends Controller
         DB::table('users')
         ->where('id', $request->input('id'))
         ->update(['email' => $request->input('email')]); 
-        //return view('profile', ['var' => true]);
+
         return ProfileController::index();
      }
 }
