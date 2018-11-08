@@ -33,6 +33,11 @@
         <a href="/catalog/all"><button type="button" class="btn btn-primary">Toutes les Catégories</button></a>
     </div>
 
+    @isset($message)
+        <div class="container text-center">
+            <p> {{ $message }} </p>
+        </div>
+    @endisset
     <div class="container">                             
         <div class="grid-vertical">
             <div class="grid-article">
@@ -46,15 +51,17 @@
                     <a  class="nom" href="/gift/{{$gift->id}}"><h2>{{$gift->nom}}</h2></a>
                     <p class="prix">{{$gift->prix}}€</p>
                     @auth
-                    <form method="POST" action="{{ url('/addPresta/'.$gift->id) }}">
+                    <form method="POST" action="">
+                        {{ csrf_field() }}
+                        <input type="hidden" value="{{ $gift->id }}" name="presta" id="presta"/>
                         <input type="submit" value="Ajouter" class="btn"/>
-                        <select name="coffrets">
+                        <select name="coffrets" id="coffrets">
                             @foreach($boxes as $box)
                                 <option value="{{ $box->id }}">{{ $box->nom }}</option>
                             @endforeach
-                        @endauth
                         </select>
                     </form> 
+                    @endauth
                 </div>
             @endforeach
             
