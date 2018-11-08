@@ -93,7 +93,7 @@
 
     @endforeach
     <a href="{{ url('profile') }}"><button type="button" class="btn btn-secondary">Retour</button></a>
-    @if(count($box[0]->url) != 0)
+    @if(strlen($box[0]->url) != 0)
         <button type="button" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';">Générer l'url</button>
         <span class="url" id="url">{{ $box[0]->url }}</span>
     @else
