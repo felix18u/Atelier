@@ -56,13 +56,13 @@
                     </div>
                 </div>
             @foreach($coffrets as $coffret)
-                <a href='.profile/coffret/{{$coffret->id}}'><button type="button" class="btn btn-primary">Modifier</button></a>
                 <div class="grid-vertical">
                     <div class="grid-article">
                         <p>{{$coffret->nom}}</p>
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
                         <a href="/coffret/{{ $coffret->id }}"><button>Voir</button></a>
+                        <a href='/profile/coffret/{{$coffret->id}}'><button>Modifier</button></a>
                     </div>
                 </div>
             @endforeach

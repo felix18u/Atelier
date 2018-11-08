@@ -41,4 +41,18 @@ class CoffretController extends Controller
        
         return view('coffret', compact('box'), compact('prestas'));
     }
+
+    public function modifier($id_coffret){
+        $box = DB::table('coffret')
+        ->where('id', '=',  $id_coffret)->get();
+        
+        $panier = DB::table('panier')
+        ->where('id_coffret', $id_coffret)->get();
+        for($i = 0; $i < count($panier); $i++){
+            $prestas[] = DB::table('prestation')
+            ->where('id', $panier[$i]->id_prestation)->get();
+        }
+       
+        return view('coffret', compact('box'), compact('prestas'));
+    }
 }
