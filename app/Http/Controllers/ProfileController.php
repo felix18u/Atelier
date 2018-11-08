@@ -36,4 +36,11 @@ class ProfileController extends Controller
 
         return ProfileController::index();
      }
+
+     public function deleteBox($id_coffret){
+        $box = DB::table('coffret')
+        ->where('id', $id_coffret)->delete();
+
+        return ProfileController::index();
+    }
 }

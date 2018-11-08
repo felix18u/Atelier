@@ -36,7 +36,7 @@ Route::post('/catalog', ['as' => 'catalog', 'uses' => 'CatalogController@addPres
 
 Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
 Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@delete');
-
+Route::get('/profile/{id_coffret}', 'ProfileController@deleteBox');
 
 Route::redirect('/','/home');
 

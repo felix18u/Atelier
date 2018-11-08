@@ -64,7 +64,7 @@ class CoffretController extends Controller
         $panier = DB::table('panier')
         ->where('id_coffret', $id_coffret)
         ->where('id_prestation', $id_prestation)->delete();
-//dd($presta);
+
         $priceGift = $presta[0]->prix;
         $priceBox = $box[0]->montantTotal;
         $total = $priceBox - $priceGift;
@@ -75,4 +75,6 @@ class CoffretController extends Controller
 
         return CoffretController::afficher($id_coffret);
     }
+
+
 }
