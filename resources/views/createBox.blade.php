@@ -39,7 +39,7 @@
                                 <div class="form-group row">
                                 <label for="message" class="col-sm-4 col-form-label text-md-right">Votre message (facultatif) :</label>
                                     <div class="col-md-6">
-                                        <input type="textarea" name="message" id="message" />
+                                        <textarea name="message" id="message" rows="5" cols="30"> </textarea>
                                     </div>
                                 </div>
 
