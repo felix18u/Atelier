@@ -18,7 +18,7 @@
 
 <div class="container">
     <div class="wrapper">     
-        <a href="/catalog/all" class="header text-center"><p>Toutes les catégories</p></a>
+        <a href="/catalog" class="header text-center"><p>Toutes les catégories</p></a>
         <a href="/catalog/category/1" class="panel text-center"><p>Attention</p></a>
         <a href="/catalog/category/2" class="panel text-center"><p>Activité</p></a>
         <a href="/catalog/category/3" class="panel text-center"><p>Restauration</p></a>
