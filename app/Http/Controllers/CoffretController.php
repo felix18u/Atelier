@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CoffretController extends Controller
 {
@@ -76,5 +77,60 @@ class CoffretController extends Controller
         return CoffretController::afficher($id_coffret);
     }
 
+    public function coffretValidate($id_coffret){
+        $box = DB::table('coffret')
+        ->where('id', $id_coffret)->get();
 
+        $panier = DB::table('panier')
+        ->where('id_coffret', $id_coffret);
+        
+
+      /* if(count($panier->id_prestation)>=2){
+           $diffCat = false;
+            $presta = DB::table('prestation')
+            ->where('id', $id_prestation)->get();
+            for($i=1;$i<=count($presta->cat_id);$i++){
+                if($presta[$i-1]->cat_id != $presta[$i]->cat_id){
+                    $diffCat= true;
+                    break;
+                }
+            }
+            if($diffCat){ */
+                return view('coffretValidate', compact('box'));
+            /* }
+            else{
+                return view('coffret', compact('box'));
+            }
+        }*/
+
+    }
+
+    public function coffretValidatePost(Request $request){
+    
+        DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['nom' => $request->input('nom'),
+        'etat' => 'En attente de paiement',
+        'message' => $request->input('message'),]);
+
+        $box = DB::table('coffret')
+        ->where('id', '=',  $request->input('id'))->get();
+        
+        if($request->input('paiement_id') == 0){
+            DB::table('paiement')
+            ->where('id', $box[0]->paiement_id)
+            ->update(['type' => $request->input('paiement_id'),]);
+        }
+       
+        /* Génération de l'url */
+        $nomcoffret = DB::table('coffret')
+        ->where('id', $request->id)
+        ->select('nom')->get();
+        $url = '/ouvrirCoffret/'.sha1(''.Auth::user()->nom.$request->id.$nomcoffret[0]->nom);
+        DB::table('coffret')
+        ->where('id', $request->id)
+        ->update(['url' => $url]);
+
+        return view('coffretValidate', compact('box'));
+    }
 }

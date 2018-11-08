@@ -85,7 +85,7 @@
         
     
         @else
-            
+
                 <div class="form">
                     <p>Vous n'avez contribué à aucun coffret pour l'instant.</p>
                     </div>
