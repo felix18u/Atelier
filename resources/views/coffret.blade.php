@@ -75,19 +75,6 @@
                         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <p>Montant total: {{ $b->montantTotal }}€</p>
                 </div>
         @else
@@ -107,7 +94,7 @@
     @endempty
 
     @endforeach
-    <a href=""><button id="valider">Valider</button></a>
+    <a href="{{ url('/coffret/coffretValidate/'.$box[0]->id) }}"><button id="valider">Valider</button></a>
     <a href="{{ url('profile') }}"><button type="button" class="btn btn-secondary">Retour</button></a>
         </div>
     </div>

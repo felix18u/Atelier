@@ -26,24 +26,18 @@
                     
                     <div class="container">
                         <div class="form">
-                        <form method="POST" action="/coffret/valider/{{ $b->id }}">
+                        <form method="POST" action="/coffret/coffretValidate/{{ $b->id }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{ $b->id }}" />
-                            <label for="nom">Votre nom:</label><br>
-                            <input type='textarea' name='nom' id='nom' value="{{$b->nom}}"/>
+                            <label for="nom">Votre nom:</label>
+                            <input type='textarea' name='nom' id='nom' value="{{$b->nom}}">
                             
-                            <!--<label for="prenom">Votre prénom:</label><br>
-                            <input type='textarea' name='prenom' id='prenom' value="{{$b->prenom}}"/>
-                            <label for="email">Votre email:</label><br>
-                            <input type='email' name='email' id='email' value="{{$b->email}}"/>-->
                             <label for="message">Votre message :</label>
-                            <br>
                             <input type="textarea" name="message" id="message" value="{{ $b->message }}"/>
-                            <br>
-                            <label for='payment' name='payment' id='payment' value="{{$b->payment}}"/><br>
-                            <input type='radio' name='payment' value='classique' checked>Classique<br>
-                            <input type='radio' name='payment' value='cagnotte'>Cagnotte<br>
-                            <input type="submit" value="Valider les modification"/>
+                            <label for='paiement_id' name='paiement_id' id='paiement_id' value="{{$b->paiement_id}}"/>
+                            <input type='radio' name='paiement_id' value='1' checked>Classique
+                            <input type='radio' name='paiement_id' value='0'>Cagnotte
+                            <input type="submit" action='' value="Valider"/>
                         </form>
                         </div>
                     </div>
@@ -67,7 +61,6 @@
     @endempty
 
     @endforeach
-    <a href=""><button id="valider">Valider</button></a>
     <a href="{{ url('profile') }}"><button type="button" class="btn btn-secondary">Retour</button></a>
         </div>
     </div>

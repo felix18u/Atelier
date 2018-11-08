@@ -76,39 +76,52 @@ class CoffretController extends Controller
         return CoffretController::afficher($id_coffret);
     }
 
-    public function validate(Request $request){
-       /**DB::table('coffret')
-        ->where('id', $request->input('id'))
-        ->update(['nom' => $request->input('nom')]);
+    public function coffretValidate($id_coffret){
+        $box = DB::table('coffret')
+        ->where('id', $id_coffret)->get();
 
-        DB::table('coffret')
-        ->where('id', $request->input('id'))
-        ->update(['prenom' => $request->input('prenom')]);
+        $panier = DB::table('panier')
+        ->where('id_coffret', $id_coffret);
         
 
-        DB::table('coffret')
-        ->where('id', $request->input('id'))
-        ->update(['etat' => $request->input('etat')]);
-        
-        DB::table('coffret')
-        ->where('id', $request->input('id'))
-        ->update(['message' => $request->input('message')]);
-
-        if($request->input('payment')== 'classique'){
-            DB::table('coffret')
-        ->where('id', $request->input('id'))
-        ->update(['paiment_id' => $request->input(1)]); //1 = classic payment
+       if(count($panier->id)>=2){
+           $diffCat = false;
+            $presta = DB::table('prestation')
+            ->where('id', $id_prestation)->get();
+            for($i=1;$i<=count($presta->cat_id);$i++){
+                if($presta[$i-1]->categorie != $presta[$i]->categorie){
+                    $diffCat= true;
+                    break;
+                }
+            }
+            if($diffCat){
+                return view('coffretValidate', compact('box'));
+            }
+            else{
+                return view('coffret', compact('box'));
+            }
         }
-        else{
-            DB::table('coffret')
+
+    }
+
+    public function coffretValidatePost(Request $request){
+    
+        DB::table('coffret')
         ->where('id', $request->input('id'))
-        ->update(['paiment_id' => $request->input(2)]); //2 = cagnotte payment
-        } */
+        ->update(['nom' => $request->input('nom'),
+        'etat' => 'En attente de paiement',
+        'message' => $request->input('message'),]);
 
         $box = DB::table('coffret')
-        ->where('id', '=',  $request->$id)->get();
+        ->where('id', '=',  $request->input('id'))->get();
+        
+        if($request->input('paiement_id') == 0){
+            DB::table('paiement')
+            ->where('id', $box[0]->paiement_id)
+            ->update(['type' => $request->input('paiement_id'),]);
+        }
        
-        return view('validate', compact('box'));
+        return view('coffretValidate', compact('box'));
 
     }
 }
