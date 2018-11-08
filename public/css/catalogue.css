@@ -6,23 +6,25 @@
 .grid-article {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: minmax(200px, 200px);
   grid-row-gap: 1em;
   margin-bottom: 10px;
   align-items: center; }
 
 img {
-  max-height: 100%;
-  width: 100%; }
+  height: 100%;
+  max-width: 100%; }
 
 img:hover {
-  filter: grayscale(100%); }
+  filter: grayscale(70%); }
 
 .nom {
-  color: #000; }
+  color: #000;
+  font-size: 2em;
+  padding-left: 5px; }
 
 .nom:hover {
-  color: #262626;
+  color: gray;
   text-decoration: none; }
 
 button {

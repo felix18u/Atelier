@@ -33,26 +33,31 @@
         <a href="/catalog"><button type="button" class="btn btn-primary">Toutes les Catégories</button></a>
     </div>
 
+    @isset($message)
+        <div class="container text-center">
+            <p> {{ $message }} </p>
+        </div>
+    @endisset
     <div class="container">                             
         <div class="grid-vertical">
-            <div class="grid-article">
-                <p> Image </p>
-                <p> Nom </p>
-                <p> Prix </p>
-            </div>
             @foreach($gifts as $gift)
                 <div class="grid-article">
+                
                     <a href="/gift/{{$gift->id}}"><img src="{{ asset('img/'.$gift->img) }}"></a>
                     <a class="nom" href="/gift/{{$gift->id}}"><div>{{$gift->nom}}</div></a>
                     <p class="prix">{{$gift->prix}}€</p>
                     @auth
-                    <button class="btn">Ajouter</button>
-                    <select name="coffrets">
-                        @foreach($boxes as $box)
-                            <option>{{ $box->nom }}</option>
-                        @endforeach
+                    <form method="POST" action="">
+                        {{ csrf_field() }}
+                        <input type="hidden" value="{{ $gift->id }}" name="presta" id="presta"/>
+                        <input type="submit" value="Ajouter" class="btn"/>
+                        <select name="coffrets" id="coffrets">
+                            @foreach($boxes as $box)
+                                <option value="{{ $box->id }}">{{ $box->nom }}</option>
+                            @endforeach
+                        </select>
+                    </form> 
                     @endauth
-                    </select> 
                 </div>
             @endforeach
             

@@ -32,9 +32,16 @@ Route::get('/gift/{id}',['as' => 'gift', 'uses' => 'GiftController@index']);
 
 Route::get('/catalog/category/{cat_id}/{type?}', ['as' => 'category', 'uses' => 'CatalogController@indexByCat']);
 
+Route::post('/catalog/all', ['as' => 'catalog', 'uses' => 'CatalogController@addPresta']);
+
 Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
 Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@delete');
 Route::post('/coffret/valider/{{id_coffret}}' , 'CoffretController@validate');
 
 
 Route::redirect('/','/home');
+
+
+Route::get('/test', function(){
+    return view('test');
+});
