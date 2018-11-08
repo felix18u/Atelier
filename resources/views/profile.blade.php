@@ -11,9 +11,9 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-3 text-center">Mon profil</h1>
+        <h1 class="title text-center">Mon profil</h1>
     </div>
-    <br>
+
     <div class="container">
         <div class="form">
         <form method="POST" action="{{ url('profile') }}">
@@ -39,11 +39,9 @@
         <p>Vos modifications ont bien été prises en compte.</p>
     </div>
     @endisset
-    <br>
     <div class="container">
-        <h1 class="display-3 text-center">Mes coffrets</h1>
+        <h1 class="title text-center" style="margin-top: 40px">Mes coffrets</h1>
     </div>
-    <br>
     
         <div class="container">  
         @if(count($coffrets) != 0)                           

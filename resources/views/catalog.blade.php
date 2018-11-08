@@ -14,12 +14,12 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-3 text-center">Catalogue</h1>
+        <h1 class="title text-center">Catalogue</h1>
     </div>
 
     <?php $url= URL::current();
-    $url =str_replace("/croissant",'',$url);
-    $url =str_replace("/decroissant",'',$url);
+        $url =str_replace("/croissant",'',$url);
+        $url =str_replace("/decroissant",'',$url);
     ?>
 
     <div class="container text-center">
@@ -43,7 +43,7 @@
             @foreach($gifts as $gift)
                 <div class="grid-article">
                     <a href="/gift/{{$gift->id}}"><img src="{{ asset('img/'.$gift->img) }}"></a>
-                    <a  class="nom" href="/gift/{{$gift->id}}"><h2>{{$gift->nom}}</h2></a>
+                    <a class="nom" href="/gift/{{$gift->id}}"><div>{{$gift->nom}}</div></a>
                     <p class="prix">{{$gift->prix}}€</p>
                     @auth
                     <button class="btn">Ajouter</button>

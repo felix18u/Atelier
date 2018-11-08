@@ -32,5 +32,8 @@ Route::get('/gift/{id}',['as' => 'gift', 'uses' => 'GiftController@index']);
 
 Route::get('/catalog/category/{cat_id}/{type?}', ['as' => 'category', 'uses' => 'CatalogController@indexByCat']);
 
+Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
+Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@delete');
+
 
 Route::redirect('/','/home');
