@@ -13,7 +13,7 @@
 @section('content')
     @foreach($gifts as $gift)
         <div class="container">
-            <h1 class="display-3 text-center">{{$gift->id}} - {{$gift->nom}}</h1>
+            <h1 class="title text-center">{{$gift->id}} - {{$gift->nom}}</h1>
         </div>
 
 

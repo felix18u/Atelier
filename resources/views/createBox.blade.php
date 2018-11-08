@@ -11,9 +11,9 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-3 text-center">Nouveau coffret</h1>
+        <h1 class="title text-center">Nouveau coffret</h1>
     </div>
-    <br>
+    
     <div class="container">
         <div class="form">
         <form method="POST" action="">
