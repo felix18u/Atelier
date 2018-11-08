@@ -65,8 +65,8 @@ class CoffretController extends Controller
         ->where('id_coffret', $id_coffret)
         ->where('id_prestation', $id_prestation)->delete();
 //dd($presta);
-        $priceGift = $presta[$id_prestation][0]->prix;
-        $priceBox = $box->montantTotal;
+        $priceGift = $presta[0]->prix;
+        $priceBox = $box[0]->montantTotal;
         $total = $priceBox - $priceGift;
 
         DB::table('coffret')
