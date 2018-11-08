@@ -18,28 +18,28 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Modifier son profil</div>
+                    <div class="card-header">Créer un coffret</div>
                         <div class="card-body">
-                        <form method="POST" action="">
+                            <form method="POST" action="">
                                 {{ csrf_field() }}
                                 <div class="form-group row">
-                                <label for="name"> Nom du coffret :</label>
+                                <label for="name" class="col-sm-4 col-form-label text-md-right"> Nom du coffret :</label>
                                     <div class="col-md-6">
                                         <input type="text" name="name" id="name" required/>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row">
-                                <label for="date">Date d'ouverture du coffret (facultatif) :</label>
+                                <label for="date" class="col-sm-4 col-form-label text-md-right">Date d'ouverture (facultatif) :</label>
                                     <div class="col-md-6">
-                                    <input type="date" name="date" id="date" />
+                                        <input type="date" name="date" id="date" />
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                <label for="message">Votre message (facultatif) :</label>
+                                <label for="message" class="col-sm-4 col-form-label text-md-right">Votre message (facultatif) :</label>
                                     <div class="col-md-6">
-                                    <input type="textarea" name="message" id="message" />
+                                        <input type="textarea" name="message" id="message" />
                                     </div>
                                 </div>
 
