@@ -50,7 +50,7 @@
                                                     <div class="form-group row">
                                                         <label for="message" class="col-sm-4 col-form-label text-md-right">Votre message :</label>
                                                         <div class="col-md-6">
-                                                            <input type="textarea" name="message" id="message" value="{{ $b->message }}"/>
+                                                            <textarea  name="message" id="message">{{ $b->message }}</textarea>
                                                         </div>
                                                     </div>
                                                     
