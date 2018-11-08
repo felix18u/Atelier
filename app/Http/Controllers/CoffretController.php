@@ -22,9 +22,9 @@ class CoffretController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request,$cof_id)
     {
-        $coffret = DB::table('coffret')->where('id',"=",$request->user()->id)->get();
+        $coffret = DB::table('coffret')->where('users_id',"=",$request->user()->id)->where('id',"=",$cof_id)->get();
         return view('coffret',compact('coffret'));
     }
 
@@ -51,8 +51,28 @@ class CoffretController extends Controller
         ->where('id', $request->input('id'))
         ->update(['date' => $request->input('date')]);
         
-        //$id =  afficher($request->input('id'));
-
         return CoffretController::afficher($request->input('id'));
+    }
+
+    public function delete($id_coffret, $id_prestation){
+        $box = DB::table('coffret')
+        ->where('id', $id_coffret)->get();
+
+        $presta = DB::table('prestation')
+        ->where('id', $id_prestation)->get();
+
+        $panier = DB::table('panier')
+        ->where('id_coffret', $id_coffret)
+        ->where('id_prestation', $id_prestation)->delete();
+//dd($presta);
+        $priceGift = $presta[$id_prestation][0]->prix;
+        $priceBox = $box->montantTotal;
+        $total = $priceBox - $priceGift;
+
+        DB::table('coffret')
+        ->where('id', $id_coffret)
+        ->update(['montantTotal' => $total]);
+
+        return CoffretController::afficher($id_coffret);
     }
 }

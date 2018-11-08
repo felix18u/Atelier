@@ -25,13 +25,6 @@ class CatalogController extends Controller
      */
     public function index($type=null)
     {   
-        $gifts = DB::table('prestation')->get();
-        if(auth::check()){
-            $boxes = DB::table('coffret')->where( 'users_id', Auth::user()->id )->get();
-        } else {
-            $boxes = "";
-        }
-        return view('catalog', compact('gifts'), compact('boxes'));
         if($type==null){
             $gifts = DB::table('prestation')->get();
             if(Auth::check()){

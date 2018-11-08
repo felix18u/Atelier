@@ -1,0 +1,39 @@
+.grid-vertical{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+}
+
+.grid-coffret{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-row-gap: 1em;
+    grid-column-gap: 1em;
+    margin-bottom: 10px;
+}
+
+button{
+    height: 50px;
+}
+
+select{
+    height: 50px;
+}
+
+.grid-article{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-row-gap: 1em;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+
+@media (max-width: 435px) {
+
+    .grid-vertical{
+        grid-template-columns: 1fr;
+    }
+}

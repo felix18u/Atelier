@@ -19,9 +19,9 @@ Route::get('/profile', ['as' => 'profile', 'uses' => 'ProfileController@index'])
 Route::post('/profile', 'ProfileController@store');
 Route::get('/catalog/{type?}', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
 
+
 Route::get('/coffret',['as' => 'coffret', 'uses' => 'CoffretController@index']);
 Route::get('/coffret/{id_coffret}', 'CoffretController@afficher');
-Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
 Route::get('/createBox', ['as' => 'createBox', 'uses' => 'CreateBoxController@index']);
 Route::post('/createBox', ['as' => 'createBox', 'uses' => 'CreateBoxController@addBox']);
 
@@ -29,9 +29,18 @@ Route::post('/createBox', ['as' => 'createBox', 'uses' => 'CreateBoxController@a
 Route::get('/gift/{id}',['as' => 'gift', 'uses' => 'GiftController@index']);
 
 
-Route::get('/catalog/all/{type?}', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
+
 Route::get('/catalog/category/{cat_id}/{type?}', ['as' => 'category', 'uses' => 'CatalogController@indexByCat']);
 
 Route::post('/catalog/all', ['as' => 'catalog', 'uses' => 'CatalogController@addPresta']);
 
+Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
+Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@delete');
+
+
 Route::redirect('/','/home');
+
+
+Route::get('/test', function(){
+    return view('test');
+});

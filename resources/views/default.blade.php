@@ -78,10 +78,7 @@
       </div>
     </nav>
 
-    <main role="main" style="padding-top:40px">
-
-
-
+    <main role="main" style="padding-top: 40px">
 
       @yield('content')
 
