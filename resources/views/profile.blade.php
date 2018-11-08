@@ -77,6 +77,7 @@
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
                         <a href="/coffret/{{ $coffret->id }}"><button class="btn btn-secondary">Voir</button></a>
+                        <a href="/profile/{{ $coffret->id }}"><button class="btn btn-secondary">Supprimer</button></a>
                     </div>
                 </div>
             @endforeach
