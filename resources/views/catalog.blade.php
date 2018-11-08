@@ -46,7 +46,7 @@
                     <a  class="nom" href="/gift/{{$gift->id}}"><h2>{{$gift->nom}}</h2></a>
                     <p class="prix">{{$gift->prix}}</p>
                     @auth
-                    <button class="btn">Ajouter</button>
+                    <a href="{{ url('/addPresta/1')}}"> <button class="btn">Ajouter</button> </a>
                     <select name="coffrets">
                         @foreach($boxes as $box)
                             <option>{{ $box->nom }}</option>
