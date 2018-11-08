@@ -13,17 +13,18 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-3 text-center">My Gift Box</h1>
+        <h1 class="title text-center">My Gift Box</h1>
     </div>
 
-    <div class="container">
-        <div class="grid-container">
-            <a href="/catalog/all" class="grid-item grid-item1"><h1 class="text-center">Toutes les catégories</h1></a>
-            <a href="/catalog/category/1" class="grid-item "><h1 class="text-center">Attention</h1></a>
-            <a href="/catalog/category/2" class="grid-item "><h1 class="text-center">Activité</h1></a>
-            <a href="/catalog/category/3" class="grid-item "><h1 class="text-center">Restauration</h1></a>
-            <a href="/catalog/category/4" class="grid-item "><h1 class="text-center">Hébergement</h1></a>
-        </div>
+<div class="container">
+    <div class="wrapper">     
+        <a href="/catalog/all" class="header text-center"><p>Toutes les catégories</p></a>
+        <a href="/catalog/category/1" class="panel text-center"><p>Attention</p></a>
+        <a href="/catalog/category/2" class="panel text-center"><p>Activité</p></a>
+        <a href="/catalog/category/3" class="panel text-center"><p>Restauration</p></a>
+        <a href="/catalog/category/4" class="panel text-center"><p>Hébergement</p> </a>  
     </div>
+</div>
+
 @endsection
 

@@ -18,7 +18,7 @@
     @isset(Auth::user()->id)
         @if($b->users_id == Auth::user()->id )
         <div class="container">
-        <h1 class="display-3 text-center">{{ $b->nom }}</h1>
+        <h1 class="title text-center">{{ $b->nom }}</h1>
         </div>
         <div class="container">                             
             <div class="grid-vertical">
@@ -28,7 +28,7 @@
                     @isset($prestas)
                         @for($i=0; $i < count($prestas); $i++)
                         <div class="grid-article">
-                        <a href="/gift/{{ $prestas[$i][0]->id }}"><img src="{{ asset('img/'.$prestas[$i][0]->img) }}"></a>
+                        <a class="img" href="/gift/{{ $prestas[$i][0]->id }}"><img src="{{ asset('img/'.$prestas[$i][0]->img) }}"></a>
                         <a class="nom" href="/gift/{{ $prestas[$i][0]->id }}"><p>{{ $prestas[$i][0]->nom }}</p></a>
                         <p class="prix">{{ $prestas[$i][0]->prix }}€</p>
                         </div>
