@@ -34,6 +34,7 @@ Route::get('/catalog/category/{cat_id}/{type?}', ['as' => 'category', 'uses' => 
 
 Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
 Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@delete');
+Route::post('/coffret/valider/{{id_coffret}}' , 'CoffretController@validate');
 
 
 Route::redirect('/','/home');

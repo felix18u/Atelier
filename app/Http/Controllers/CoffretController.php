@@ -71,4 +71,15 @@ class CoffretController extends Controller
 
         return CoffretController::afficher($id_coffret);
     }
+
+    public function validate(Request $request,$id_coffret){
+        $box = DB::table('coffret')
+        ->where('id', $id_coffret)->update(['etat' => 'Validé'])->update(['message' => $request->input('message')]);
+
+        return CoffretController::afficher($id_coffret);
+
+
+
+
+    }
 }
