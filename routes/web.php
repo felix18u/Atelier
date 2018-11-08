@@ -36,3 +36,8 @@ Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@de
 
 
 Route::redirect('/','/home');
+
+
+Route::get('/test', function(){
+    return view('test');
+});
