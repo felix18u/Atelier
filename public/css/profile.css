@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .grid-vertical{
     display: grid;
     grid-template-columns: 1fr;
@@ -13,20 +12,6 @@
     margin-bottom: 10px;
     align-items: center;
 }
-=======
-.grid-vertical {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: auto; }
-
-.grid-article {
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-row-gap: 1em;
-  margin-bottom: 10px;
-  align-items: center; }
->>>>>>> 013ea4b38cad39729e01dbddc263425d6ebdc57e
 
 img {
   max-height: 100%;

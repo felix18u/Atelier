@@ -42,20 +42,6 @@ class CoffretController extends Controller
         return view('coffret', compact('box'), compact('prestas'));
     }
 
-<<<<<<< HEAD
-    public function modifier($id_coffret){
-        $box = DB::table('coffret')
-        ->where('id', '=',  $id_coffret)->get();
-        
-        $panier = DB::table('panier')
-        ->where('id_coffret', $id_coffret)->get();
-        for($i = 0; $i < count($panier); $i++){
-            $prestas[] = DB::table('prestation')
-            ->where('id', $panier[$i]->id_prestation)->get();
-        }
-       
-        return view('coffret', compact('box'), compact('prestas'));
-=======
     public function modifier(Request $request){
         DB::table('coffret')
         ->where('id', $request->input('id'))
@@ -84,6 +70,5 @@ class CoffretController extends Controller
         }*/
 
         return CoffretController::afficher($id_coffret);
->>>>>>> 013ea4b38cad39729e01dbddc263425d6ebdc57e
     }
 }
