@@ -76,6 +76,8 @@
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
                         <a href="/coffret/{{ $coffret->id }}"><button>Voir</button></a>
+                        <a href='/coffret/{{$coffret->id}}'><button>Modifier</button></a>
+                        <a href='/coffret/validate/{{$coffret->id}}'><button>Valider</button></a>
                     </div>
                 </div>
             @endforeach
@@ -83,7 +85,7 @@
         
     
         @else
-            
+        
                 <div class="form">
                     <p>Vous n'avez contribué à aucun coffret pour l'instant.</p>
                     </div>

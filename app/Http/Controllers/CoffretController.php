@@ -76,14 +76,39 @@ class CoffretController extends Controller
         return CoffretController::afficher($id_coffret);
     }
 
-    public function validate(Request $request,$id_coffret){
+    public function validate(Request $request){
+       /**DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['nom' => $request->input('nom')]);
+
+        DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['prenom' => $request->input('prenom')]);
+        
+
+        DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['etat' => $request->input('etat')]);
+        
+        DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['message' => $request->input('message')]);
+
+        if($request->input('payment')== 'classique'){
+            DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['paiment_id' => $request->input(1)]); //1 = classic payment
+        }
+        else{
+            DB::table('coffret')
+        ->where('id', $request->input('id'))
+        ->update(['paiment_id' => $request->input(2)]); //2 = cagnotte payment
+        } */
+
         $box = DB::table('coffret')
-        ->where('id', $id_coffret)->update(['etat' => 'Validé'])->update(['message' => $request->input('message')]);
-
-        return CoffretController::afficher($id_coffret);
-
-
-
+        ->where('id', '=',  $request->$id)->get();
+       
+        return view('validate', compact('box'));
 
     }
 }
