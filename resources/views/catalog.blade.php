@@ -30,7 +30,7 @@
         <a href="/catalog/category/2"><button type="button" class="btn btn-primary">Activité</button></a>
         <a href="/catalog/category/3"><button type="button" class="btn btn-primary">Restauration</button></a>
         <a href="/catalog/category/4"><button type="button" class="btn btn-primary">Hébergement</button></a>
-        <a href="/catalog/all"><button type="button" class="btn btn-primary">Toutes les Catégories</button></a>
+        <a href="/catalog"><button type="button" class="btn btn-primary">Toutes les Catégories</button></a>
     </div>
 
     <div class="container">                             
