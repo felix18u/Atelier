@@ -25,6 +25,7 @@ class CreateBoxController extends Controller
 
         $coffrets = DB::table('coffret')
         ->where('users_id',  Auth::user()->id)->get();
+        
         DB::table('coffret')
         ->where('id', $coffrets[count($coffrets)-1]->id)
         ->update(['paiement_id' => $coffrets[count($coffrets)-1]->id]); 
