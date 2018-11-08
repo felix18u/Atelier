@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CoffretController extends Controller
 {
@@ -121,7 +122,15 @@ class CoffretController extends Controller
             ->update(['type' => $request->input('paiement_id'),]);
         }
        
+        /* Génération de l'url */
+        $nom_coffret = DB::table('coffret')
+        ->where('id', $request->id)
+        ->select('nom')->get();
+        $url = '/ouvrirCoffret/'.sha1(Auth::user()->nom + $request->id + $nomcoffret[0]->nom);
+        DB::table('coffret')
+        ->where('id', $request->id)
+        ->update(['url' => $url]);
+        
         return view('coffretValidate', compact('box'));
-
     }
 }

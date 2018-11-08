@@ -76,7 +76,7 @@
                         <p>{{$coffret->nom}}</p>
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
-                        <a href="/coffret/{{ $coffret->id }}"><button>Voir</button></a>
+                        <a href="/coffret/{{ $coffret->id }}"><button class="btn btn-secondary">Voir</button></a>
                     </div>
                 </div>
             @endforeach
@@ -91,7 +91,7 @@
                 </div>
         @endif
             <div class="form">
-                <a href="{{ url('createBox') }}"><button>Créer un coffret</button></a>
+                <a href="{{ url('createBox') }}"><button class="btn btn-secondary">Créer un coffret</button></a>
             </div>
         </div>
 

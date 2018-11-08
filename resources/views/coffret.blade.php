@@ -31,7 +31,7 @@
                         <a href="/gift/{{ $prestas[$i][0]->id }}"><img src="{{ asset('img/'.$prestas[$i][0]->img) }}"></a>
                         <a class="nom" href="/gift/{{ $prestas[$i][0]->id }}"><p>{{ $prestas[$i][0]->nom }}</p></a>
                         <p class="prix">{{ $prestas[$i][0]->prix }}€</p>
-                        <a href="/coffret/suppr/{{ $b->id }}/{{ $prestas[$i][0]->id }}"><button class="btn">Supprimer</button></a>
+                        <a href="/coffret/suppr/{{ $b->id }}/{{ $prestas[$i][0]->id }}"><button class="btn btn-secondary">Supprimer</button></a>
                         </div>
                         
                         @endfor
@@ -73,8 +73,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     <p>Montant total: {{ $b->montantTotal }}€</p>
                 </div>
         @else
@@ -94,8 +92,14 @@
     @endempty
 
     @endforeach
-    <a href="{{ url('/coffret/coffretValidate/'.$box[0]->id) }}"><button id="valider">Valider</button></a>
     <a href="{{ url('profile') }}"><button type="button" class="btn btn-secondary">Retour</button></a>
+    @isset($box[0]->url)
+        <button type="button" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';">Générer l'url</button>
+        <span class="url" id="url">$box[0]->url</span>
+    @endisset
+    @empty($box[0]->url)
+    <a href="{{ url('/coffret/coffretValidate/'.$box[0]->id) }}"><button id="valider">Valider</button></a>
+    @endempty
+            </div>
         </div>
-    </div>
 @endsection
