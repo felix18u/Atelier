@@ -19,39 +19,35 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Modifier son profil</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ url('profile') }}">
-                            {{ csrf_field() }}
-
-                            <div class="form-group row">
-                                <label for="name" class="col-sm-4 col-form-label text-md-right"> Votre nom :</label>
-                                <div class="col-md-6">
-                                    <input type="text" name="name" id="name" value="{{ Auth::user()->name }}" pattern="[a-z]{1,}"/>
+                        <div class="card-body">
+                            <form method="POST" action="{{ url('profile') }}">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id" value="{{ Auth::user()->id }}"/>
+                                <div class="form-group row">
+                                    <label for="name" class="col-sm-4 col-form-label text-md-right"> Votre nom :</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="name" id="name" value="{{ Auth::user()->name }}" pattern="[a-z]{1,}"/>
+                                    </div>
                                 </div>
-        
-                            </div>
-                            
-                            <div class="form-group row">
-                                <label for="email">Votre adresse mail :</label>
-                                <div class="col-md-6">
-                                    <input type="email" name="email" id="email" value="{{ Auth::user()->email }}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+                                
+                                <div class="form-group row">
+                                    <label for="email" class="col-sm-4 col-form-label text-md-right">Votre adresse mail :</label>
+                                    <div class="col-md-6">
+                                        <input type="email" name="email" id="email" value="{{ Auth::user()->email }}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+                                    </div>
                                 </div>
-                            </div>
 
-                            
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <input type="submit" value="Valider les modifications"/>
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <input type="submit" value="Valider les modifications"/>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     @isset($var)
     <br>
@@ -80,7 +76,6 @@
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
                         <a href="/coffret/{{ $coffret->id }}"><button>Voir</button></a>
-                        <a href='/coffret/{{$coffret->id}}'><button>Modifier</button></a>
                     </div>
                 </div>
             @endforeach
