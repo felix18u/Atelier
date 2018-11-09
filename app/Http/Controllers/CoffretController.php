@@ -82,23 +82,41 @@ class CoffretController extends Controller
         ->where('id', $id_coffret)->get();
 
         $panier = DB::table('panier')
-        ->where('id_coffret', $id_coffret);
-        
+        ->where('id_coffret', $id_coffret)->get();
 
-      if(count($panier->id_prestation)>=2){
-           $diffCat = false;
-            $presta = DB::table('prestation')
-            ->where('id', $id_prestation)->get();
-            for($i=1;$i<=count($presta->cat_id);$i++){
-                if($presta[$i-1]->cat_id != $presta[$i]->cat_id){
-                    $diffCat= true;
-                    break;
+        $count = DB::table('panier')
+        ->where('id_coffret', $id_coffret)->count();
+
+        $cat1=$cat2=$cat3=$cat4=0;
+
+        //return view('coffretValidate', compact('box'));
+
+
+      if($count>=2){
+            for($i=0;$i<$count;$i++){
+                $presta = DB::table('prestation')
+                ->where('id',$panier[$i]->id_prestation)->get();
+                switch ($presta[0]->cat_id) {
+                    case 1:
+                        $cat1+=1;
+                        break;
+                    case 2:
+                        $cat2+=1;
+                        break;
+                    case 3:
+                        $cat3+=1;
+                        break;
+                    case 4:
+                        $cat4+=1;
+                        break;
                 }
             }
-            if($diffCat){ 
+            //test to know if there's is 2 different categories for the prestations
+            if($cat1>=1 && $cat2 >=1 || $cat2>=1 && $cat3 >=1 || $cat3>=1 && $cat4 >=1 || $cat1>=1 && $cat3 >=1 || $cat1>=1 && $cat4 >=1 || $cat2>=1 && $cat4 >=1){ 
                 return view('coffretValidate', compact('box'));
              }
             else{
+                echo 'Coffret invalide';
                 return view('coffret', compact('box'));
             }
         }
