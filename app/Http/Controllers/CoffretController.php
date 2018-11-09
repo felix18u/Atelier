@@ -78,7 +78,7 @@ class CoffretController extends Controller
     }
 
 
-
+/*
     public function coffretValidate($id_coffret){
         $box = DB::table('coffret')
         ->where('id', $id_coffret)->get();
@@ -126,13 +126,9 @@ class CoffretController extends Controller
             return view('coffret', compact('box'),compact('err'));
         }
 
-    }
+    }*/
 
     public function validateBox( $id_coffret){
-
-        DB::table('coffret')
-        ->where('id', $id_coffret)
-        ->update(['etat'=> "En attente de paiement"]);
 
         $box = DB::table('coffret')
         ->where('id', $id_coffret)->get();
@@ -170,6 +166,17 @@ class CoffretController extends Controller
             }
             //test to know if there's is 2 different categories for the prestations
             if($cat1>=1 && $cat2 >=1 || $cat2>=1 && $cat3 >=1 || $cat3>=1 && $cat4 >=1 || $cat1>=1 && $cat3 >=1 || $cat1>=1 && $cat4 >=1 || $cat2>=1 && $cat4 >=1){ 
+                DB::table('coffret')
+                ->where('id', $id_coffret)
+                ->update(['etat'=> "En attente de paiement"]);
+                        /* Génération de l'url */
+                         $nomcoffret = DB::table('coffret')
+                         ->where('id', $id_coffret)
+                         ->select('nom')->get();
+                         $url = '/ouvrirCoffret/'.sha1(''.Auth::user()->nom.$id_coffret.$nomcoffret[0]->nom);
+                         DB::table('coffret')
+                        ->where('id', $id_coffret)
+                        ->update(['url' => $url]);
                 return view('coffret', compact('box'), compact('prestas'));
              }
             else{
@@ -183,17 +190,10 @@ class CoffretController extends Controller
 
 
 
-        /* Génération de l'url */
-        $nomcoffret = DB::table('coffret')
-        ->where('id', $id_coffret)
-        ->select('nom')->get();
-        $url = '/ouvrirCoffret/'.sha1(''.Auth::user()->nom.$id_coffret.$nomcoffret[0]->nom);
-        DB::table('coffret')
-        ->where('id', $id_coffret)
-        ->update(['url' => $url]);
+
 
         //return CoffretController::afficher($id_coffret);
-        return CoffretController::coffretValidate($id_coffret);
+        //return CoffretController::coffretValidate($id_coffret);
     }
 
         /*public function coffretValidate($id_coffret){
