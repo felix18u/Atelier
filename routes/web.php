@@ -47,3 +47,8 @@ Route::redirect('/','/home');
 Route::get('/test', function(){
     return view('test');
 });
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', 'AdminController@index');
+    
+});
