@@ -47,7 +47,7 @@
                     <a class="nom" href="/gift/{{$gift->id}}"><div>{{$gift->nom}}</div></a>
                     <p class="prix">{{$gift->prix}}€</p>
                     @auth
-                    <form method="POST" action="">
+                    <form method="POST" onsubmit="return alert('La prestation a été ajouté au coffret');" action="">
                         {{ csrf_field() }}
                         <input type="hidden" value="{{ $gift->id }}" name="presta" id="presta"/>
                         <input type="submit" value="Ajouter" class="btn btn-secondary"/>
