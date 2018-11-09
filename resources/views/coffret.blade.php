@@ -23,6 +23,11 @@
         <div class="container">                             
             <div class="grid-vertical">
                 <div class="grid-coffret">
+
+                    @isset($err)
+                        <p class='coffretError'>{{$err}}</p>
+                    @endisset
+
                     <p>{{ $b->etat }}</p>
                     
                     @isset($prestas)

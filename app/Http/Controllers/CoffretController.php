@@ -91,7 +91,9 @@ class CoffretController extends Controller
 
         //return view('coffretValidate', compact('box'));
 
-      if($count>=2){
+        $err = 'Coffret invalide: doit contenir au moins deux prestations de deux catégorie différente.';
+
+        if($count>=2){
             for($i=0;$i<$count;$i++){
                 $presta = DB::table('prestation')
                 ->where('id',$panier[$i]->id_prestation)->get();
@@ -115,11 +117,11 @@ class CoffretController extends Controller
                 return view('coffretValidate', compact('box'));
              }
             else{
-                return view('coffret', compact('box'));
+                return view('coffret', compact('box'), compact('err'));
             }
         }
         else{
-            return view('coffret', compact('box'));
+            return view('coffret', compact('box'),compact('err'));
         }
 
     }
