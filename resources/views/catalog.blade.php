@@ -43,7 +43,7 @@
             @foreach($gifts as $gift)
                 <div class="grid-article">
                 
-                    <a href="/gift/{{$gift->id}}"><img src="{{ asset('img/'.$gift->img) }}"></a>
+                    <a href="/gift/{{$gift->id}}"><img src="{{ asset('/storage/img/'.$gift->img) }}"></a>
                     <a class="nom" href="/gift/{{$gift->id}}"><div>{{$gift->nom}}</div></a>
                     <p class="prix">{{$gift->prix}}€</p>
                     @auth

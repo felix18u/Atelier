@@ -50,5 +50,8 @@ Route::get('/test', function(){
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', 'AdminController@index');
-    
+    Route::get('/addGift', 'AdminController@showAddGift');
+    Route::post('/addGift', 'AdminController@addGift');
+    Route::post('/admin/delete', 'AdminController@deleteGift')->name("deleteGift");
+    Route::post('/admin/active', 'AdminController@changeActive')->name('active');
 });
