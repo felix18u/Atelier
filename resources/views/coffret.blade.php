@@ -24,12 +24,13 @@
         <div class="container">                             
             <div class="grid-vertical">
                 <div class="grid-coffret">
-                    <p>{{ $b->etat }}</p>
-                    
+
                     @isset($err)
                         <p class='coffretError'>{{$err}}</p>
                     @endisset
 
+                    <p>{{ $b->etat }}</p>
+                    
                     @isset($prestas)
                         @for($i=0; $i < count($prestas); $i++)
                         <div class="grid-article">
