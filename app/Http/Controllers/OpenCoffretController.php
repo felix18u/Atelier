@@ -21,7 +21,12 @@ class OpenCoffretController extends Controller
                 $prestas[] = DB::table('prestation')
                 ->where('id', $panier[$i]->id_prestation)->get();
             }
-            return view('opencoffret', ['url' => url('/ouvrirCoffret/'.$sha1), 'prestas' => $prestas, 'nom' => $box[0]->nom, 'message' => $box[0]->message]);
+
+            $user = DB::table('users')
+            ->where('id', $box[0]->users_id)->get();
+
+
+            return view('opencoffret', ['url' => url('/ouvrirCoffret/'.$sha1), 'prestas' => $prestas, 'nom' => $user[0]->name, 'message' => $box[0]->message]);
         } else { return view('opencoffret', ['fail' => true]); }
         
     }
@@ -31,6 +36,9 @@ class OpenCoffretController extends Controller
         ->where('url', '=',  url('/ouvrirCoffret/'.$sha1))
         ->get();
         
+        $user = DB::table('users')
+        ->where('id', $box[0]->users_id)->get();
+
         if(count($box) != 0) {
             $prestas = [];
             $panier = DB::table('panier')
@@ -42,7 +50,7 @@ class OpenCoffretController extends Controller
                 $prestas[] = DB::table('prestation')
                 ->where('id', $panier[$i]->id_prestation)->get();
             }
-            return view('opencoffret', ['url' => url('/ouvrirCoffret/'.$sha1), 'prestas' => $prestas, 'nom' => $box[0]->nom, 'message' => $box[0]->message, 'confirm' => true]);
+            return view('opencoffret', ['url' => url('/ouvrirCoffret/'.$sha1), 'prestas' => $prestas, 'nom' => $user[0]->name, 'message' => $box[0]->message, 'confirm' => true]);
         } else { return view('opencoffret', ['fail' => true]); }
     }
 
