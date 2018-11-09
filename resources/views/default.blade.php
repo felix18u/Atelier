@@ -41,6 +41,12 @@
               <a class="nav-link" href="{{ route('login') }}">Créer un coffret</a>
             </li>
           @endauth
+          @if( (Auth::user() &&  Auth::user()->admin == 1))
+            <li class="nav-item">
+              <a class="nav-link" href="">Administration</a>
+            </li>
+          @endif
+
         </ul>
         <ul class="navbar-nav ">
 
