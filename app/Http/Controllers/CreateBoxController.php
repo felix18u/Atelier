@@ -29,7 +29,7 @@ class CreateBoxController extends Controller
         DB::table('coffret')
         ->where('id', $coffrets[count($coffrets)-1]->id)
         ->update(['paiement_id' => $coffrets[count($coffrets)-1]->id]); 
-
-        return view('profile', compact('coffrets'));
+        
+        return redirect(url('/profile'));
     }
 }
