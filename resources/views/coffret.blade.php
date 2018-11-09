@@ -26,6 +26,10 @@
                 <div class="grid-coffret">
                     <p>{{ $b->etat }}</p>
                     
+                    @isset($err)
+                        <p class='coffretError'>{{$err}}</p>
+                    @endisset
+
                     @isset($prestas)
                         @for($i=0; $i < count($prestas); $i++)
                         <div class="grid-article">
