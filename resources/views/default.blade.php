@@ -43,7 +43,7 @@
           @endauth
           @if( (Auth::user() &&  Auth::user()->admin == 1))
             <li class="nav-item">
-              <a class="nav-link" href="">Administration</a>
+              <a class="nav-link" href="{{ route('admin') }}">Administration</a>
             </li>
           @endif
 
