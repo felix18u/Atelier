@@ -82,9 +82,47 @@ class CoffretController extends Controller
         ->where('id', $id_coffret)->get();
 
         $panier = DB::table('panier')
-        ->where('id_coffret', $id_coffret);
+        ->where('id_coffret', $id_coffret)->get();
 
-        return view('coffretValidate', compact('box'));
+        $count = DB::table('panier')
+        ->where('id_coffret', $id_coffret)->count();
+
+        $cat1=$cat2=$cat3=$cat4=0;
+
+        //return view('coffretValidate', compact('box'));
+
+        $err = 'Coffret invalide: doit contenir au moins deux prestations de deux catégorie différente.';
+
+        if($count>=2){
+            for($i=0;$i<$count;$i++){
+                $presta = DB::table('prestation')
+                ->where('id',$panier[$i]->id_prestation)->get();
+                switch ($presta[0]->cat_id) {
+                    case 1:
+                        $cat1+=1;
+                        break;
+                    case 2:
+                        $cat2+=1;
+                        break;
+                    case 3:
+                        $cat3+=1;
+                        break;
+                    case 4:
+                        $cat4+=1;
+                        break;
+                }
+            }
+            //test to know if there's is 2 different categories for the prestations
+            if($cat1>=1 && $cat2 >=1 || $cat2>=1 && $cat3 >=1 || $cat3>=1 && $cat4 >=1 || $cat1>=1 && $cat3 >=1 || $cat1>=1 && $cat4 >=1 || $cat2>=1 && $cat4 >=1){ 
+                return view('coffretValidate', compact('box'));
+             }
+            else{
+                return view('coffret', compact('box'), compact('err'));
+            }
+        }
+        else{
+            return view('coffret', compact('box'),compact('err'));
+        }
 
     }
 
