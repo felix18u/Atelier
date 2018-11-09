@@ -53,7 +53,9 @@
                         <input type="submit" value="Ajouter" class="btn btn-secondary"/>
                         <select name="coffrets" id="coffrets">
                             @foreach($boxes as $box)
+                                @if($box->etat == "En cours de création")
                                 <option value="{{ $box->id }}">{{ $box->nom }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </form> 

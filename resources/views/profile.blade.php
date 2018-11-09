@@ -7,6 +7,7 @@
 
 @section('link')
     <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
+    <script src="{{ asset('/js/confirmation.js') }}"></script>
 @endsection
 
 @section('content')
@@ -77,7 +78,7 @@
                         <p>{{ $coffret->etat }}</p>
                         <p>{{ $coffret->montantTotal }}€</p>
                         <a href="/coffret/{{ $coffret->id }}"><button class="btn btn-secondary">Voir</button></a>
-                        <a href="/profile/{{ $coffret->id }}"><button class="btn btn-secondary">Supprimer</button></a>
+                        <a href="/profile/{{ $coffret->id }}"><button class="btn btn-secondary" onclick="return confirmSuppr();">Supprimer</button></a>
                     </div>
                 </div>
             @endforeach

@@ -37,8 +37,9 @@ Route::post('/catalog', ['as' => 'catalog', 'uses' => 'CatalogController@addPres
 Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
 Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@delete');
 Route::get('/profile/{id_coffret}', 'ProfileController@deleteBox');
-Route::get('/coffret/coffretValidate/{id_coffret}' ,[ 'as'=>'validate','uses'=>'CoffretController@coffretValidate']);
-Route::post('/coffret/coffretValidate/{id_coffret}' ,[ 'as'=>'validate','uses'=>'CoffretController@coffretValidatePost']);
+
+
+Route::get('/coffret/valid/{id_coffret}' ,[ 'as'=>'validate','uses'=>'CoffretController@validateBox']);
 
 
 Route::redirect('/','/home');
