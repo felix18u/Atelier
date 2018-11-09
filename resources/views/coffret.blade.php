@@ -23,6 +23,11 @@
         <div class="container">                             
             <div class="grid-vertical">
                 <div class="grid-coffret">
+
+                    @isset($err)
+                        <p class='coffretError'>{{$err}}</p>
+                    @endisset
+
                     <p>{{ $b->etat }}</p>
                     
                     @isset($prestas)
@@ -33,7 +38,6 @@
                         <p class="prix">{{ $prestas[$i][0]->prix }}€</p>
                         <a href="/coffret/suppr/{{ $b->id }}/{{ $prestas[$i][0]->id }}"><button class="btn btn-secondary">Supprimer</button></a>
                         </div>
-                        
                         @endfor
                     @endisset
                     <br>
