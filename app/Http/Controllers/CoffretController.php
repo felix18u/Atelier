@@ -105,7 +105,7 @@ class CoffretController extends Controller
 
     }
 
-    public function coffretValidatePost(Request $request){
+    /*public function coffretValidatePost(Request $request){
         
         DB::table('coffret')
         ->where('id', $request->input('id'))
@@ -122,7 +122,7 @@ class CoffretController extends Controller
             ->update(['type' => $request->input('paiement_id')]);
         }
        
-        /* Génération de l'url */
+        // Génération de l'url 
         $nomcoffret = DB::table('coffret')
         ->where('id', $request->id)
         ->select('nom')->get();
@@ -130,15 +130,14 @@ class CoffretController extends Controller
         DB::table('coffret')
         ->where('id', $request->id)
         ->update(['url' => $url]);
-        //return CoffretController::afficher($request->id);
+        
         return view('coffret', compact('box'));
-    }
+    }*/
 
     public function validateBox( $id_coffret){
         DB::table('coffret')
         ->where('id', $id_coffret)
         ->update(['etat'=> "En attente de paiement"]);
-        //return CoffretController::coffretValidatePost($request);
 
         /* Génération de l'url */
         $nomcoffret = DB::table('coffret')
