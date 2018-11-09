@@ -80,7 +80,7 @@ class CoffretController extends Controller
 
     public function validateBox( $id_coffret){
 
-        $prestas[] = null;
+        $prestas = null;
         $p = DB::table('panier')
         ->where('id_coffret', $id_coffret)->get();
         for($i = 0; $i < count($p); $i++){
