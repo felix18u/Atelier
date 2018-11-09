@@ -42,6 +42,12 @@ Route::post('/catalog', ['as' => 'catalog', 'uses' => 'CatalogController@addPres
 /* One gift of the catalog */
 Route::get('/gift/{id}',['as' => 'gift', 'uses' => 'GiftController@index']);
 Route::get('/gift/{id}/wp',['as' => 'gift', 'uses' => 'GiftController@wp']);
+Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
+Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@delete');
+Route::get('/profile/{id_coffret}', 'ProfileController@deleteBox');
+
+
+Route::get('/coffret/valid/{id_coffret}' ,[ 'as'=>'validate','uses'=>'CoffretController@validateBox']);
 
 /* Open a coffret */
 Route::get('/ouvrirCoffret/{sha1}', ['as' => 'ouvrirCoffret', 'uses' => 'OpenCoffretController@index']);
