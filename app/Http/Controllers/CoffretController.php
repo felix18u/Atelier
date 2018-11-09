@@ -91,7 +91,6 @@ class CoffretController extends Controller
 
         //return view('coffretValidate', compact('box'));
 
-
       if($count>=2){
             for($i=0;$i<$count;$i++){
                 $presta = DB::table('prestation')
@@ -116,9 +115,11 @@ class CoffretController extends Controller
                 return view('coffretValidate', compact('box'));
              }
             else{
-                echo 'Coffret invalide';
                 return view('coffret', compact('box'));
             }
+        }
+        else{
+            return view('coffret', compact('box'));
         }
 
     }
