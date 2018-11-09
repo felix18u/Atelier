@@ -40,7 +40,7 @@ Route::get('/profile/{id_coffret}', 'ProfileController@deleteBox');
 
 
 Route::get('/coffret/valid/{id_coffret}' ,[ 'as'=>'validate','uses'=>'CoffretController@validateBox']);
-
+Route::get('/coffret/paid/{id_coffret}' ,[ 'as'=>'paid','uses'=>'CoffretController@paid']);
 
 Route::redirect('/','/home');
 

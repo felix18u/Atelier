@@ -144,7 +144,7 @@
     @if(($box[0]->etat =="En attente de paiement"))
         <button class="btn btn-secondary" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';" >Générer l'url</button>
         <span class="url" id="url">{{ $box[0]->url }}</span>
-        <button class="btn btn-secondary" id="bouton_paiement">Paiement</button>
+        <a href="{{ url('/coffret/paid/'.$box[0]->id) }}"><button class="btn btn-secondary" id="bouton_paiement">Paiement</button></a>
     @elseif($box[0]->etat =="En cours de création")
     <a href="{{ url('/coffret/valid/'.$box[0]->id) }}"><button onclick="return confirmValidate();" class="btn btn-secondary" id="valider" >Valider le coffret</button></a>
     @endif

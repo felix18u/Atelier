@@ -147,4 +147,12 @@ class CoffretController extends Controller
 
     }
 
+    public function paid($id_coffret){
+        DB::table('coffret')
+        ->where('id', $id_coffret)
+        ->update(['etat' => 'Payé']);
+
+        return CoffretController::afficher($id_coffret);
+    }
+
 }
