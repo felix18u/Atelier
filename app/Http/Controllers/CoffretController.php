@@ -80,7 +80,7 @@ class CoffretController extends Controller
 
     public function validateBox( $id_coffret){
 
-
+        $prestas = null;
         $p = DB::table('panier')
         ->where('id_coffret', $id_coffret)->get();
         for($i = 0; $i < count($p); $i++){
@@ -145,6 +145,14 @@ class CoffretController extends Controller
             return view('coffret', ['box' => $box, 'err' => $err, 'prestas' => $prestas]);
         }
 
+    }
+
+    public function paid($id_coffret){
+        DB::table('coffret')
+        ->where('id', $id_coffret)
+        ->update(['etat' => 'Payé']);
+
+        return CoffretController::afficher($id_coffret);
     }
 
 }

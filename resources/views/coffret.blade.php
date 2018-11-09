@@ -141,11 +141,14 @@
     @endforeach
     <a href="{{ url('profile') }}"><button type="button" class="btn btn-secondary">Retour</button></a>
     @if(($box[0]->etat =="En attente de paiement"))
+        <a href="{{ url('/coffret/paid/'.$box[0]->id) }}"><button class="btn btn-secondary" id="bouton_paiement">Paiement</button></a>
         <button class="btn btn-secondary" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';" >Générer l'url</button>
         <span class="url" id="url">{{ $box[0]->url }}</span>
-        <button class="btn btn-secondary" id="bouton_paiement">Paiement</button>
     @elseif($box[0]->etat =="En cours de création")
     <a href="{{ url('/coffret/valid/'.$box[0]->id) }}"><button onclick="return confirmValidate();" class="btn btn-secondary" id="valider" >Valider le coffret</button></a>
+    @elseif($box[0]->etat =="Payé")
+    <button class="btn btn-secondary" id="buttonurl" onclick="document.getElementById('url').style.display = 'inline';" >Générer l'url</button>
+    <span class="url" id="url">{{ $box[0]->url }}</span>
     @endif
             </div>
         </div>
