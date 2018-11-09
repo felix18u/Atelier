@@ -22,7 +22,7 @@
                 <img class="grid-img" src="/img/{{$gift->img}}">
                 <p class="grid-descr">Description : {{$gift->descr}}</p>
                 <p class="grid-cat_id">Catégorie : {{ $cat[0]->nom }} ({{$gift->cat_id}}) </p>
-                <p class="grid-prix">Prix : {{$gift->prix}}€</p>
+                @empty($wp)<p class="grid-prix">Prix : {{$gift->prix}}€</p>@endempty
             </div>
             <a href="{{ URL::previous() }}"><button type="button" class="btn btn-secondary">Retour</button></a>
         </div>

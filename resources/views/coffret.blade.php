@@ -33,7 +33,6 @@
                         <p class="prix">{{ $prestas[$i][0]->prix }}€</p>
                         <a href="/coffret/suppr/{{ $b->id }}/{{ $prestas[$i][0]->id }}"><button class="btn btn-secondary">Supprimer</button></a>
                         </div>
-                        
                         @endfor
                     @endisset
                     <br>
