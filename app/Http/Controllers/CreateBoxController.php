@@ -13,6 +13,7 @@ class CreateBoxController extends Controller
         return view('createBox');
     }
 
+    /*Fonction permettant à un utilisateur de créer un nouveau coffret*/
     public function addBox(Request $request)
     {
         DB::table('paiement')->insert([

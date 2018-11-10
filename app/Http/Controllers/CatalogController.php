@@ -54,6 +54,7 @@ class CatalogController extends Controller
         }
     }
 
+    /*Fonction permettant de trier les prestations selon leur catégorie*/
     public function indexByCat($cat_id,$type=null)
     {  
         if($type==null){
@@ -85,6 +86,7 @@ class CatalogController extends Controller
         }
     }
 
+    /*Fonction permettant d'ajouter une prestation à un coffret*/
     public function addPresta(Request $request) {
         DB::table('panier')->insert(
             ['id_coffret' => $request->coffrets, 'id_prestation' => $request->presta]

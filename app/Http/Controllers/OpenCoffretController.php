@@ -61,7 +61,7 @@ class OpenCoffretController extends Controller
 
         DB::table('coffret')
         ->where('id', $box[0]->id)
-        ->update(['etat' => 'Message recu', 'remerciement' => $request->message]);
+        ->update(['etat' => 'Message reçu', 'remerciement' => $request->message]);
 
         return view('messageconfirm');
     }
