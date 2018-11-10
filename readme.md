@@ -25,3 +25,10 @@
 
 - Documentation Laravel : https://laravel.com/docs/5.7
 - Cours/Tutoriel Laravel : https://laravel.sillo.org/
+
+## Contributeurs
+
+- Dufour Matthieu
+- Félix Paul
+- Borg Théo
+- Marly Yanis
