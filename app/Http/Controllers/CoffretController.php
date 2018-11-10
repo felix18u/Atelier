@@ -29,6 +29,7 @@ class CoffretController extends Controller
         return view('coffret',compact('coffret'));
     }
 
+    /*Fonction permettant d'afficher le contenu d'un coffret (l'ensemble de ses prestations, son message, sa date d'ouverture et son mode de paiement)*/
     public function afficher($id_coffret){
         $box = DB::table('coffret')
         ->where('id', '=',  $id_coffret)->get();
@@ -43,6 +44,7 @@ class CoffretController extends Controller
         return view('coffret', compact('box'), compact('prestas'));
     }
 
+    /*Fonction permettant de modifier le message, le mode de paiement et la date d'ouverture du coffret */
     public function modifier(Request $request){
         DB::table('coffret')
         ->where('id', $request->input('id'))
@@ -55,6 +57,7 @@ class CoffretController extends Controller
         return CoffretController::afficher($request->input('id'));
     }
 
+    /*Fonction permettant à un utilisateur de supprimer un coffret*/
     public function delete($id_coffret, $id_prestation){
         $box = DB::table('coffret')
         ->where('id', $id_coffret)->get();
@@ -77,7 +80,7 @@ class CoffretController extends Controller
         return CoffretController::afficher($id_coffret);
     }
 
-
+    /*Fonction permettant de valider le coffret et de générer son URL*/
     public function validateBox( $id_coffret){
 
         $prestas = null;
@@ -147,6 +150,7 @@ class CoffretController extends Controller
 
     }
 
+    /*fonction permettant de changer l'état du coffret en 'payé'*/
     public function paid($id_coffret){
         DB::table('coffret')
         ->where('id', $id_coffret)
