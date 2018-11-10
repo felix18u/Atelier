@@ -45,7 +45,7 @@ class OpenCoffretController extends Controller
             ->where('id_coffret', $box[0]->id)->get();
             DB::table('coffret')
             ->where('id', $box[0]->id)
-            ->update(['etat' => 'Coffre ouvert']);
+            ->update(['etat' => 'Coffret ouvert']);
             for($i = 0; $i < count($panier); $i++){
                 $prestas[] = DB::table('prestation')
                 ->where('id', $panier[$i]->id_prestation)->get();
