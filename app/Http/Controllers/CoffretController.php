@@ -135,7 +135,7 @@ class CoffretController extends Controller
                          DB::table('coffret')
                         ->where('id', $id_coffret)
                         ->update(['url' => $url]);
-            return view('coffret', compact('box'), compact('prestas'));
+            return redirect('/coffret/'.$id_coffret); //'coffret', compact('box'), compact('prestas'));
              }
             else{
                 return view('coffret', ['box' => $box, 'err' => $err, 'prestas' => $prestas]);
