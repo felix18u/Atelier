@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 class PrestationTableSeeder extends Seeder
 {
     /**
+     *  
      * Run the database seeds.
      *
      * @return void

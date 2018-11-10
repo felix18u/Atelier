@@ -2,7 +2,9 @@
 
 
 @section('title')
-    gift name
+    @foreach($gifts as $gift)
+        {{$gift->nom}}
+    @endforeach
 @endsection
 
 
@@ -19,7 +21,7 @@
 
         <div class="container">
             <div class="grid-container">
-                <img class="grid-img" src="/img/{{$gift->img}}">
+                <img class="grid-img" src="{{ asset('/storage/img/'.$gift->img) }}">
                 <p class="grid-descr">Description : {{$gift->descr}}</p>
                 <p class="grid-cat_id">Catégorie : {{ $cat[0]->nom }} ({{$gift->cat_id}}) </p>
                 @empty($wp)<p class="grid-prix">Prix : {{$gift->prix}}€</p>@endempty

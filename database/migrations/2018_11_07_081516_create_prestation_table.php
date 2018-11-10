@@ -20,6 +20,7 @@ class CreatePrestationTable extends Migration
             $table->integer('cat_id')->nullable(false)->unsigned();
             $table->string('img', 255)->nullable(false);
             $table->decimal('prix', 5, 2)->nullable(false);
+            $table->boolean('actif')->default(true)->nullable(false);
             $table->engine = 'InnoDB';
         });
 

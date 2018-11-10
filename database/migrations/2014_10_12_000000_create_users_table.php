@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->boolean('admin')->default(false)->nullable(false);
             $table->engine = 'InnoDB';
         });
     }
