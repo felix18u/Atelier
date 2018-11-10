@@ -50,6 +50,8 @@
                     <form method="POST" onsubmit="return alert('La prestation a été ajouté au coffret');" action="">
                         {{ csrf_field() }}
                         <input type="hidden" value="{{ $gift->id }}" name="presta" id="presta"/>
+
+                        @if($gift->actif == 1)
                         <input type="submit" value="Ajouter" class="btn btn-secondary"/>
                         <select name="coffrets" id="coffrets">
                             @foreach($boxes as $box)
@@ -58,6 +60,8 @@
                                 @endif
                             @endforeach
                         </select>
+                        @endif
+
                     </form> 
                     @endauth
                 </div>

@@ -46,6 +46,8 @@ Route::post('/coffret/{id_coffret}', 'CoffretController@modifier');
 Route::get('/coffret/suppr/{id_coffret}/{id_prestation?}', 'CoffretController@delete');
 Route::get('/profile/{id_coffret}', 'ProfileController@deleteBox');
 
+Route::get('/coffret/valid/{id_coffret}' ,[ 'as'=>'validate','uses'=>'CoffretController@validateBox']);
+
 /* Open a coffret */
 Route::get('/ouvrirCoffret/{sha1}', ['as' => 'ouvrirCoffret', 'uses' => 'OpenCoffretController@index']);
 Route::get('/ouvrirCoffret/{sha1}/confirm', ['as' => 'ouvrirCoffret', 'uses' => 'OpenCoffretController@confirm']);
@@ -62,7 +64,7 @@ Route::get('/test', function(){
 });
 
 Route::group(['middleware' => 'admin'], function () {
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin', 'AdminController@index')->name('admin');
     Route::get('/addGift', 'AdminController@showAddGift');
     Route::post('/addGift', 'AdminController@addGift');
     Route::post('/admin/delete', 'AdminController@deleteGift')->name("deleteGift");
