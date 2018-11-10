@@ -1,6 +1,8 @@
 # MyGiftBox
 
+- Dépôt Git: https://github.com/felix18u/Atelier
 - Trello: https://trello.com/b/XWOk1vxS/atelier
+- Lien site en ligne: http://mighty-lake-44959.herokuapp.com/
 
 ## Requirements
 
