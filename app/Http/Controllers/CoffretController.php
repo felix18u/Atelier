@@ -131,11 +131,11 @@ class CoffretController extends Controller
                          $nomcoffret = DB::table('coffret')
                          ->where('id', $id_coffret)
                          ->select('nom')->get();
-                         $url = '/ouvrirCoffret/'.sha1(''.Auth::user()->nom.$id_coffret.$nomcoffret[0]->nom);
+                         $url = url('/ouvrirCoffret/'.sha1(''.Auth::user()->nom.$id_coffret.$nomcoffret[0]->nom));
                          DB::table('coffret')
                         ->where('id', $id_coffret)
                         ->update(['url' => $url]);
-            return view('coffret', compact('box'), compact('prestas'));
+            return redirect('/coffret/'.$id_coffret); //'coffret', compact('box'), compact('prestas'));
              }
             else{
                 return view('coffret', ['box' => $box, 'err' => $err, 'prestas' => $prestas]);

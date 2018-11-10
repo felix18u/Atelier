@@ -19,10 +19,7 @@ class CreatePanierTable extends Migration
             $table->engine = 'InnoDB';
         });
 
-        Schema::table('panier', function(Blueprint $table) {
-            $table->foreign('id_coffret')->references('id')->on('coffret');
-            $table->foreign('id_prestation')->references('id')->on('prestation');
-        });
+
     }
 
     /**
