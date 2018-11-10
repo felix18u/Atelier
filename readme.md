@@ -30,5 +30,5 @@
 
 - Dufour Matthieu
 - Félix Paul
-- Borg Théo
+- Borg Théo (Elweyy/Loïc SPACHER sur github)
 - Marly Yanis
