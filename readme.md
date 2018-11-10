@@ -1,4 +1,6 @@
-#MyGiftBox
+# MyGiftBox
+
+- Trello: https://trello.com/b/XWOk1vxS/atelier
 
 ## Requirements
 
