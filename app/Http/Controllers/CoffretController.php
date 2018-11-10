@@ -39,7 +39,7 @@ class CoffretController extends Controller
             $prestas[] = DB::table('prestation')
             ->where('id', $panier[$i]->id_prestation)->get();
         }
-       
+
         return view('coffret', compact('box'), compact('prestas'));
     }
 
@@ -77,7 +77,17 @@ class CoffretController extends Controller
         return CoffretController::afficher($id_coffret);
     }
 
-    public function coffretValidate($id_coffret){
+
+    public function validateBox( $id_coffret){
+
+        $prestas = null;
+        $p = DB::table('panier')
+        ->where('id_coffret', $id_coffret)->get();
+        for($i = 0; $i < count($p); $i++){
+            $prestas[] = DB::table('prestation')
+            ->where('id', $p[$i]->id_prestation)->get();
+        }
+
         $box = DB::table('coffret')
         ->where('id', $id_coffret)->get();
 
@@ -114,44 +124,35 @@ class CoffretController extends Controller
             }
             //test to know if there's is 2 different categories for the prestations
             if($cat1>=1 && $cat2 >=1 || $cat2>=1 && $cat3 >=1 || $cat3>=1 && $cat4 >=1 || $cat1>=1 && $cat3 >=1 || $cat1>=1 && $cat4 >=1 || $cat2>=1 && $cat4 >=1){ 
-                return view('coffretValidate', compact('box'));
+                DB::table('coffret')
+                ->where('id', $id_coffret)
+                ->update(['etat'=> "En attente de paiement"]);
+                        /* Génération de l'url */
+                         $nomcoffret = DB::table('coffret')
+                         ->where('id', $id_coffret)
+                         ->select('nom')->get();
+                         $url = url('/ouvrirCoffret/'.sha1(''.Auth::user()->nom.$id_coffret.$nomcoffret[0]->nom));
+                         DB::table('coffret')
+                        ->where('id', $id_coffret)
+                        ->update(['url' => $url]);
+            return view('coffret', compact('box'), compact('prestas'));
              }
             else{
-                return view('coffret', compact('box'), compact('err'));
+                return view('coffret', ['box' => $box, 'err' => $err, 'prestas' => $prestas]);
             }
         }
         else{
-            return view('coffret', compact('box'),compact('err'));
+            return view('coffret', ['box' => $box, 'err' => $err, 'prestas' => $prestas]);
         }
 
     }
 
-    public function coffretValidatePost(Request $request){
-    
+    public function paid($id_coffret){
         DB::table('coffret')
-        ->where('id', $request->input('id'))
-        ->update(['nom' => $request->input('nom'),
-        'etat' => 'En attente de paiement',
-        'message' => $request->input('message'),]);
+        ->where('id', $id_coffret)
+        ->update(['etat' => 'Payé']);
 
-        $box = DB::table('coffret')
-        ->where('id', '=',  $request->input('id'))->get();
-        
-        if($request->input('paiement_id') == 0){
-            DB::table('paiement')
-            ->where('id', $box[0]->paiement_id)
-            ->update(['type' => $request->input('paiement_id'),]);
-        }
-       
-        /* Génération de l'url */
-        $nomcoffret = DB::table('coffret')
-        ->where('id', $request->id)
-        ->select('nom')->get();
-        $url = url('/ouvrirCoffret/'.sha1(''.Auth::user()->nom.$request->id.$nomcoffret[0]->nom));
-        DB::table('coffret')
-        ->where('id', $request->id)
-        ->update(['url' => $url]);
-
-        return view('coffretValidate', compact('box'));
+        return CoffretController::afficher($id_coffret);
     }
+
 }

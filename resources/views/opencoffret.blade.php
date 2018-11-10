@@ -18,7 +18,7 @@
             <div class="grid-coffret">
                 <h1 class="display-4 text-center">Un coffret-cadeau vous a été offret par : {{ $nom }}</h1>
                 @empty($confirm)
-                    <a href="{{ url($url.'/confirm') }}"><input class="btn btn-secondary" type="button" value="Ouvrir ?"/></a>
+                    <a href="{{ url($url.'/confirm') }}"><input style="margin-top:40px;" class="col-sm-12 btn btn-secondary" type="button" value="Ouvrir ?"/></a>
                 @endempty
                 @isset($confirm)
                     <h1 class="display-5 text-center">{{ $message }}</h1>
@@ -35,16 +35,20 @@
                             @endisset
                         @endfor
                     @endisset
+                    </div>
+        </div>
+    </div>
+                    <div class="container">
                     <form method="POST" action="">
                         {{ csrf_field() }}
                         <p class="text-center"> Remerciez le ! </p> 
-                        <textarea  class="" name="message" id="message"></textarea>
-                        <input class="btn btn-secondary" type="submit" value="Le remercier"/>
+                        <textarea  class=" col-sm-12" name="message" id="message" rows="5"></textarea>
+                        <input class="col-sm-12 btn btn-secondary" type="submit" value="Le remercier"/>
+                        
                     </form> 
+                    </div>
                 @endisset
-            </div>
-        </div>
-    </div>
+           
     @endempty
     @isset($fail)
         <h1 class="display-3 text-center">Mince ! Ce cadeau n'existe pas :'(</h1>
